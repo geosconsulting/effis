@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.0-beta2" last-position="0,0" last-zoom="1"
+	 default-schema="public" default-owner="postgres">
+<role name="fabio"
+      inherit="true"
+      login="true"
+      encrypted="true"
+      password="********">
+</role>
+
+<database name="test" encoding="UTF8" lc-collate="en_US.UTF-8" lc-ctype="en_US.UTF-8">
+	<role name="postgres"/>
+	<tablespace name="pg_default"/>
+</database>
+
+<schema name="public" rect-visible="true" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<sequence name="test_table_ext_test_auto_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="test_table_ext">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="60" y="120"/>
+	<column name="test_auto" not-null="true" sequence="public.test_table_ext_test_auto_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="test_char" not-null="true">
+		<type name="character varying" length="4"/>
+	</column>
+	<constraint name="test_table_ext_pkey" type="pk-constr" table="public.test_table_ext">
+		<columns names="test_char" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="user_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="test_table">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="460" y="180"/>
+	<column name="test_auto" not-null="true" sequence="public.user_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="test_char" not-null="true">
+		<type name="character varying" length="40"/>
+	</column>
+	<column name="test_date">
+		<type name="date" length="0"/>
+	</column>
+	<column name="test_fk">
+		<type name="character varying" length="4"/>
+	</column>
+	<column name="altra_fk">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="test_table_key" type="pk-constr" table="public.test_table">
+		<columns names="test_auto" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="table_altra_ext">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="80" y="340"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="chiave_esterna" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="table_altra_ext_pk" type="pk-constr" table="public.table_altra_ext">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="unique_ext" type="uq-constr" table="public.table_altra_ext">
+		<columns names="chiave_esterna" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[id•chiave_esterna⸣
+•100⸣
+•200⸣
+•300]]>
+	</initial-data>
+</table>
+
+<constraint name="test_table_test_fk_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.test_table_ext" table="public.test_table">
+	<columns names="test_fk" ref-type="src-columns"/>
+	<columns names="test_char" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="altra_fk_unique" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.table_altra_ext" table="public.test_table">
+	<columns names="altra_fk" ref-type="src-columns"/>
+	<columns names="chiave_esterna" ref-type="dst-columns"/>
+</constraint>
+
+<relationship name="rel_test_table_test_table_ext" type="relfk"
+	 custom-color="#2272b6"
+	 src-table="public.test_table"
+	 dst-table="public.test_table_ext"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_test_table_table_altra_ext" type="relfk"
+	 src-table="public.test_table"
+	 dst-table="public.table_altra_ext"
+	 src-required="false" dst-required="false"/>
+
+</dbmodel>

@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.0-beta2" last-position="0,192" last-zoom="0.85"
+	 default-schema="public" default-owner="postgres">
+<database name="effis">
+</database>
+
+<schema name="public" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<table name="BurntAreaForecast">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="320" y="220"/>
+	<column name="id">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="date">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="fire">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="metadata">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="shape">
+		<type name="geometry" length="0" spatial-type="POLYGON" variation="0" srid="0"/>
+	</column>
+	<column name="time_horizon">
+		<type name="smallint" length="0"/>
+	</column>
+</table>
+
+<table name="Choices">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="560" y="360"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="type">
+		<type name="varchar" length="40"/>
+	</column>
+	<constraint name="Choices_pk" type="pk-constr" table="public.&quot;Choices&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[id•type⸣
+•Modis⸣
+•Viirs]]>
+	</initial-data>
+</table>
+
+<table name="Intensity">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="40" y="140"/>
+	<column name="Intensity_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="evo_id">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="date">
+		<type name="date" length="0"/>
+	</column>
+	<column name="map">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="total">
+		<type name="float" length="0"/>
+	</column>
+	<column name="average">
+		<type name="float" length="0"/>
+	</column>
+	<column name="peak">
+		<type name="float" length="0"/>
+	</column>
+	<column name="meta">
+		<type name="smallint" length="0"/>
+	</column>
+	<constraint name="Intensity_pk" type="pk-constr" table="public.&quot;Intensity&quot;">
+		<columns names="Intensity_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="BurntArea">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="40" y="420"/>
+	<column name="id">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="area">
+		<type name="float" length="0"/>
+	</column>
+	<column name="date">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="fire">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="metadata">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="shape">
+		<type name="geometry" length="0" spatial-type="POLYGON" variation="0" srid="4326"/>
+	</column>
+</table>
+
+<table name="GhostHotSpot">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="360" y="360"/>
+	<column name="hot_spot_id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="country">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="province">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="commune">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="date">
+		<type name="date" length="0"/>
+	</column>
+	<column name="satellite">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="shape">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="meta">
+		<type name="smallint" length="0"/>
+	</column>
+</table>
+
+<table name="MacroArea">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="500" y="720"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="name">
+		<type name="varchar" length="50"/>
+	</column>
+	<column name="organization">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="MacroArea_pk" type="pk-constr" table="public.&quot;MacroArea&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[id•name⸣
+•Africa⸣
+•Asia⸣
+•Europe⸣
+•North America⸣
+•Oceania⸣
+•South America]]>
+	</initial-data>
+</table>
+
+<table name="HotSpot">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="320" y="40"/>
+	<column name="hot_spot_id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="country">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="province">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="commune">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="date">
+		<type name="date" length="0"/>
+	</column>
+	<column name="satellite">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="ghost">
+		<type name="bool" length="0"/>
+	</column>
+	<column name="shape">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="meta">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="ghost_spot_id">
+		<type name="smallint" length="0"/>
+	</column>
+</table>
+
+<table name="HotSpotCluster">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="540" y="40"/>
+	<column name="hot_spot_cluster_id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="country">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="province">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="commune">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="date">
+		<type name="date" length="0"/>
+	</column>
+	<column name="area">
+		<type name="float" length="0"/>
+	</column>
+	<column name="shape">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="meta">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="fire_id">
+		<type name="smallint" length="0"/>
+	</column>
+</table>
+
+<table name="FirePopulationDamageStatistic">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="820" y="380"/>
+	<column name="id">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="burnt_area">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="buffer_size">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fire_builtup_area">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fire_forecast">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="fire_pop_avg">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fire_pop_peak">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fire_pop_total">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="on_forecast">
+		<type name="bool" length="0"/>
+	</column>
+	<column name="potential_builtup_area">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="potential_pop_avg">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="potential_pop_peak">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="potential_pop_total">
+		<type name="integer" length="0"/>
+	</column>
+</table>
+
+<table name="FireEnvironmentalDamageStatistic">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1160" y="420"/>
+	<column name="id">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="burnt_area">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="agricultural_area">
+		<type name="float" length="0"/>
+	</column>
+	<column name="artificial_surface">
+		<type name="float" length="0"/>
+	</column>
+	<column name="broad_leaved_forest">
+		<type name="float" length="0"/>
+	</column>
+	<column name="coniferous">
+		<type name="float" length="0"/>
+	</column>
+	<column name="mixed">
+		<type name="float" length="0"/>
+	</column>
+	<column name="other_land_cover">
+		<type name="float" length="0"/>
+	</column>
+	<column name="other_natural_landcover">
+		<type name="float" length="0"/>
+	</column>
+	<column name="percentage_natura2k">
+		<type name="float" length="0"/>
+	</column>
+	<column name="sclerophyllous">
+		<type name="float" length="0"/>
+	</column>
+	<column name="transitional">
+		<type name="float" length="0"/>
+	</column>
+</table>
+
+<table name="Emission">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="800" y="40"/>
+	<column name="emission_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fire_id">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="date">
+		<type name="date" length="0"/>
+	</column>
+	<column name="chemical">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="total">
+		<type name="float" length="0"/>
+	</column>
+	<column name="average">
+		<type name="float" length="0"/>
+	</column>
+	<column name="peak">
+		<type name="float" length="0"/>
+	</column>
+	<column name="meta">
+		<type name="smallint" length="0"/>
+	</column>
+	<constraint name="Emission_pk" type="pk-constr" table="public.&quot;Emission&quot;">
+		<columns names="emission_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Organization">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="540" y="520"/>
+	<column name="id">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="name">
+		<type name="varchar" length="25"/>
+	</column>
+	<initial-data>
+<![CDATA[id•name⸣
+•ONU⸣
+•EMEA⸣
+•EU]]>
+	</initial-data>
+</table>
+
+<table name="EmissionShapes">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1200" y="80"/>
+	<column name="emission_shape_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="emission_id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="date">
+		<type name="date" length="0"/>
+	</column>
+	<column name="shape">
+		<type name="geometry" length="0" spatial-type="MULTIPOLYGON" variation="0" srid="0"/>
+	</column>
+	<column name="altitude">
+		<type name="float" length="0"/>
+	</column>
+	<column name="meta">
+		<type name="smallint" length="0"/>
+	</column>
+	<constraint name="EmissionShapes_pk" type="pk-constr" table="public.&quot;EmissionShapes&quot;">
+		<columns names="emission_shape_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="FireEmissionStatistic">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1540" y="460"/>
+	<column name="id">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="fire">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="biomass">
+		<type name="float" length="0"/>
+	</column>
+	<column name="ch4">
+		<type name="float" length="0"/>
+	</column>
+	<column name="co">
+		<type name="float" length="0"/>
+	</column>
+	<column name="co2">
+		<type name="float" length="0"/>
+	</column>
+	<column name="ec">
+		<type name="float" length="0"/>
+	</column>
+	<column name="nmhc">
+		<type name="float" length="0"/>
+	</column>
+	<column name="nox">
+		<type name="float" length="0"/>
+	</column>
+	<column name="oc">
+		<type name="float" length="0"/>
+	</column>
+	<column name="pm">
+		<type name="float" length="0"/>
+	</column>
+	<column name="pm10">
+		<type name="float" length="0"/>
+	</column>
+	<column name="pm2_5">
+		<type name="float" length="0"/>
+	</column>
+	<column name="voc">
+		<type name="float" length="0"/>
+	</column>
+</table>
+
+<table name="Chemicals">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="840" y="260"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="name">
+		<type name="char" length="80"/>
+	</column>
+	<constraint name="chemical_pk" type="pk-constr" table="public.&quot;Chemicals&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[id•type⸣
+•Modis⸣
+•Viirs]]>
+	</initial-data>
+</table>
+
+<table name="Report">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="800" y="620"/>
+	<column name="id">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="data">
+		<type name="json" length="0"/>
+	</column>
+	<column name="date">
+		<type name="date" length="0"/>
+	</column>
+	<column name="filepath">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="fire">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="revision">
+		<type name="integer" length="0"/>
+	</column>
+</table>
+
+<table name="Country">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="60" y="560"/>
+	<column name="id" not-null="true">
+		<type name="char" length="3"/>
+	</column>
+	<column name="name">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="eu">
+		<type name="bool" length="0"/>
+	</column>
+	<column name="macro_area">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0" spatial-type="MULTIPOLYGON" variation="0" srid="0"/>
+	</column>
+	<constraint name="Country_pk" type="pk-constr" table="public.&quot;Country&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<constraint name="chemical_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="CASCADE" ref-table="public.&quot;Chemicals&quot;" table="public.&quot;Emission&quot;">
+	<columns names="chemical" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="emission_id-fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="CASCADE" ref-table="public.&quot;Emission&quot;" table="public.&quot;EmissionShapes&quot;">
+	<columns names="emission_id" ref-type="src-columns"/>
+	<columns names="emission_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="org_country_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="CASCADE" ref-table="public.&quot;Organization&quot;" table="public.&quot;Country&quot;">
+	<columns names="macro_area" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<relationship name="&quot;rel_Emission_Chemicals&quot;" type="relfk"
+	 src-table="public.&quot;Emission&quot;"
+	 dst-table="public.&quot;Chemicals&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="&quot;rel_Country_Organization&quot;" type="relfk"
+	 src-table="public.&quot;Country&quot;"
+	 dst-table="public.&quot;Organization&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="&quot;rel_EmissionShapes_Emission&quot;" type="relfk"
+	 src-table="public.&quot;EmissionShapes&quot;"
+	 dst-table="public.&quot;Emission&quot;"
+	 src-required="false" dst-required="false"/>
+
+</dbmodel>

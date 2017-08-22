@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.0-beta2" last-position="0,0" last-zoom="1"
+	 default-schema="public" default-owner="postgres">
+<database name="effis" encoding="UTF8" lc-collate="en_US.UTF-8" lc-ctype="en_US.UTF-8">
+	<role name="postgres"/>
+	<tablespace name="pg_default"/>
+</database>
+
+<schema name="public" rect-visible="true" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<schema name="geo" rect-visible="true" fill-color="#d62499">
+	<role name="postgres"/>
+</schema>
+
+<sequence name="nuts_gid_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="geo"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="nuts">
+	<schema name="geo"/>
+	<role name="postgres"/>
+	<position x="20" y="83"/>
+	<column name="gid" not-null="true" sequence="geo.nuts_gid_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nuts_id">
+		<type name="character varying" length="14"/>
+	</column>
+	<column name="stat_levl_">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="shape_area">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="shape_len">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<constraint name="nuts_pkey" type="pk-constr" table="geo.nuts">
+		<columns names="gid" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="attributes_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="geo"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="attributes">
+	<schema name="geo"/>
+	<role name="postgres"/>
+	<position x="300" y="83"/>
+	<column name="id" not-null="true" sequence="geo.attributes_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="cntr_code">
+		<type name="character" length="2"/>
+	</column>
+	<column name="nuts_id">
+		<type name="character varying" length="14"/>
+	</column>
+	<column name="name_latin">
+		<type name="character" length="255"/>
+	</column>
+	<column name="name_ascii">
+		<type name="character" length="255"/>
+	</column>
+	<constraint name="nuts_attributes_pkey" type="pk-constr" table="geo.attributes">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<view name="nuts_attr">
+	<schema name="geo"/>
+	<role name="postgres"/>
+	<position x="40" y="220"/>
+	<reference>
+		<expression><![CDATA[ SELECT a.gid,
+    a.nuts_id,
+    a.stat_levl_,
+    a.geom,
+    b.name_latin,
+    b.name_ascii
+   FROM geo.nuts a,
+    geo.attributes b
+  WHERE ((a.nuts_id)::text = (b.nuts_id)::text);]]></expression>
+	</reference>
+</view>
+
+<view name="countries">
+	<schema name="geo"/>
+	<role name="postgres"/>
+	<position x="40" y="280"/>
+	<reference>
+		<expression><![CDATA[ SELECT nuts_attr.gid,
+    nuts_attr.nuts_id,
+    nuts_attr.stat_levl_,
+    nuts_attr.name_ascii,
+    nuts_attr.geom
+   FROM geo.nuts_attr
+  WHERE (nuts_attr.stat_levl_ = 0);]]></expression>
+	</reference>
+</view>
+
+<view name="macro_regions">
+	<schema name="geo"/>
+	<role name="postgres"/>
+	<position x="40" y="320"/>
+	<reference>
+		<expression><![CDATA[ SELECT nuts_attr.gid,
+    nuts_attr.nuts_id,
+    nuts_attr.stat_levl_,
+    nuts_attr.name_ascii,
+    nuts_attr.geom
+   FROM geo.nuts_attr
+  WHERE (nuts_attr.stat_levl_ = 1);]]></expression>
+	</reference>
+</view>
+
+<view name="regions">
+	<schema name="geo"/>
+	<role name="postgres"/>
+	<position x="40" y="380"/>
+	<reference>
+		<expression><![CDATA[ SELECT nuts_attr.gid,
+    nuts_attr.nuts_id,
+    nuts_attr.stat_levl_,
+    nuts_attr.name_ascii,
+    nuts_attr.geom
+   FROM geo.nuts_attr
+  WHERE (nuts_attr.stat_levl_ = 2);]]></expression>
+	</reference>
+</view>
+
+<view name="provinces">
+	<schema name="geo"/>
+	<role name="postgres"/>
+	<position x="40" y="440"/>
+	<reference>
+		<expression><![CDATA[ SELECT nuts_attr.gid,
+    nuts_attr.nuts_id,
+    nuts_attr.stat_levl_,
+    nuts_attr.name_ascii,
+    nuts_attr.geom
+   FROM geo.nuts_attr
+  WHERE (nuts_attr.stat_levl_ = 3);]]></expression>
+	</reference>
+</view>
+
+<sequence name="burnt_area_gid_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="geo"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="burnt_area">
+	<schema name="geo"/>
+	<role name="postgres"/>
+	<position x="600" y="83"/>
+	<column name="gid" not-null="true" sequence="geo.burnt_area_gid_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="objectid">
+		<type name="numeric" length="10" precision="0"/>
+	</column>
+	<column name="id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="country">
+		<type name="character varying" length="2"/>
+	</column>
+	<column name="countryful">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="province">
+		<type name="character varying" length="60"/>
+	</column>
+	<column name="commune">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="firedate">
+		<type name="character varying" length="10"/>
+	</column>
+	<column name="area_ha">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="broadlea">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="conifer">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="mixed">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="scleroph">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="transit">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="othernatlc">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="agriareas">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="artifsurf">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="otherlc">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="percna2k">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="lastupdate">
+		<type name="character varying" length="10"/>
+	</column>
+	<column name="class">
+		<type name="character varying" length="6"/>
+	</column>
+	<column name="mic">
+		<type name="character varying" length="5"/>
+	</column>
+	<column name="critech">
+		<type name="character varying" length="3"/>
+	</column>
+	<column name="shape_area">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="shape_len">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<constraint name="burnt_area_pkey" type="pk-constr" table="geo.burnt_area">
+		<columns names="gid" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="modis_hs_gid_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="geo"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="modis_hs">
+	<schema name="geo"/>
+	<role name="postgres"/>
+	<position x="280" y="240"/>
+	<column name="gid" not-null="true" sequence="geo.modis_hs_gid_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="objectid">
+		<type name="numeric" length="10" precision="0"/>
+	</column>
+	<column name="hs_date">
+		<type name="character varying" length="10"/>
+	</column>
+	<column name="hs_time">
+		<type name="character varying" length="5"/>
+	</column>
+	<column name="conf">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="country">
+		<type name="character varying" length="2"/>
+	</column>
+	<column name="province">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="commune">
+		<type name="character varying" length="80"/>
+	</column>
+	<column name="corine">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="class">
+		<type name="character varying" length="4"/>
+	</column>
+	<column name="lat">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="lon">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="critech">
+		<type name="character varying" length="3"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<constraint name="modis_hs_pkey" type="pk-constr" table="geo.modis_hs">
+		<columns names="gid" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+</dbmodel>
