@@ -1,0 +1,218 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="4EF21895-33A8-9088-CC81-918F8AD84CDB" name="fireEmissionStatistic">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>E4C05233-B082-1ED8-EC2D-D6A82C4240A2</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="fes_id" id="AC1122A2-0BA1-7022-CB08-E1A556C6EFD8">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>4060007C-FC9E-F930-6535-400AD661B6C1</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fire_id" id="409DE05A-E181-3F39-59E0-A306C394CCB2">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>413E8DD4-02C8-378B-728B-ECFAC5C1E89C</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="464615FB-513F-709E-D725-252DC5BA3E81" referredColumn="A7362FF0-557F-926A-C347-9FEE62942ADB"/>
+</associations>
+</Column>
+<Column name="biomass" id="4DCD11BB-1C4C-BA45-777C-B00235E740CB">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>71270916-A45D-7355-291F-C87A9E15BF3A</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ch4" id="0373FD5F-64AB-5894-0669-770B85EBF513">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>E24D3A3B-90B3-C0BC-6A24-6256F46E53AE</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="co" id="0FF50DD7-FFF4-2F0D-33F8-30A039DAB400">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>5C0C4473-F756-681D-5FC7-47A8BCB01BFF</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="c02" id="7A3DEA47-464B-4E60-F1BA-6396A752B838">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>1211005D-6148-254D-A758-95961A9B98E3</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ec" id="B7163D8D-68EE-AFC3-567B-207BB02284A6">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>F91B7D2B-4AA6-2F4E-616F-3B42CBB58115</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nmhc" id="99CBF463-7521-AF8E-7707-92F607C1B54F">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>2FD23CBF-3DF6-8228-C581-DC5B2D7EFAF3</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nox" id="1A77F381-BFEC-9316-5EBC-D4DED30A5584">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>9C59CCDD-94E5-B367-5371-6FA6C4214BF1</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="oc" id="55F70722-4A7A-84A6-2913-EC2BC5BF5860">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>7CD153F1-2FCB-9BFF-7561-EA8FF4BB8AE5</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="pm" id="81C0526B-B231-03FF-F362-012ECDADF289">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>12C305AF-8C4D-103C-4D58-ED6BD7FA04DC</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="pm10" id="8BA52B75-124E-0696-F7CB-73DA317ED0C0">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>E47EF5D2-3398-0622-6F71-A15EFF6D0921</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="pm25" id="93CFB0E1-4AD0-4B35-6B49-6C04AAE01F12">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>680FFCE0-502F-3FC1-15D3-51BB86A6F445</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="voc" id="0A8149DE-FFAC-399B-E37A-93EA8D5F936B">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>0E4FC0F9-E8EB-EF28-25C1-E85FBA633136</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D0051AC1-FC09-2575-D9D3-9C2DFDF75213" name="fireEmissionStatistic_PK">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>287B4780-13A7-A2F8-EA39-73A0FE34D696</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AC1122A2-0BA1-7022-CB08-E1A556C6EFD8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="EB532473-0DFE-A3CE-695A-7F755F15B8F3" name="fireEmissionStatistic_fire_FK">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:53:47 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="409DE05A-E181-3F39-59E0-A306C394CCB2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

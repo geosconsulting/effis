@@ -1,0 +1,104 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="8DA5AB4C-EA90-A386-DCB2-858B716DAC5B" name="region">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-04 15:50:38 UTC</createdTime>
+<comment>NUTS2</comment>
+<commentInRDBMS>NUTS2</commentInRDBMS>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="region id" id="BA9D17DD-661C-DF9F-A206-AFC917484529">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-04 15:50:38 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>12 CHAR</dataTypeSize>
+<ownDataTypeParameters>12 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="name" id="B54631D5-BC04-305B-0138-F7D630124177">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-04 15:50:38 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>3521C5EF-3353-EA68-7C94-F68012508D4E</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="shape" id="6A79BF3D-2D33-2F9C-A5B8-7942C793BDD0">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-04 15:50:38 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>3</use>
+<structuredType>47E390DE-0671-C4B1-8428-0F45CBEE18F8</structuredType>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="state id" id="22DF2F25-89F4-0104-83AB-0A32DF7D295B">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:28:12 UTC</createdTime>
+<generatorID>4E9A354F-4B60-FA25-EA31-F02E071E0BD6</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>759CE2D2-9E45-A853-D471-D37157868205</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="country id" id="389D2EC8-0276-B6C2-B84B-91EC4ECA68A2">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:30:56 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="FDEB1CCA-D0F1-AC47-1653-D18769DE93E0" name="region PK">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-04 15:50:38 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<newElementsIDs>BA9D17DD-661C-DF9F-A206-AFC917484529</newElementsIDs>
+<usedAttributes>
+<attributeRef>BA9D17DD-661C-DF9F-A206-AFC917484529</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,63 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="5B62FF5F-B469-93E5-C6D9-78AABE55EF09" name="state">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<comment>NUTS1</comment>
+<commentInRDBMS>NUTS1</commentInRDBMS>
+<generatorID>07B1D7BB-7DC4-0197-8866-7F7D834DDC2D</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="state_id" id="BC9A21B4-4D0B-B37E-6079-CD542C3AC350">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>759CE2D2-9E45-A853-D471-D37157868205</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name" id="B8D09029-3A1D-CE73-800E-37A02DDE135A">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>538FCB0B-969F-51BB-3C95-D0AA0A1B5B70</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>3521C5EF-3353-EA68-7C94-F68012508D4E</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="shape" id="28990386-DF1C-8D0D-ED59-D9D118AA4DD5">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>5227A46E-7F8E-F4B8-9EA7-8CA8700ECD2D</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>3</use>
+<structuredType>47E390DE-0671-C4B1-8428-0F45CBEE18F8</structuredType>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0172462F-379A-78CE-BC87-21D65C1F10DC" name="state_PK">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>3783A488-83CE-C912-F68A-C8440B452698</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BC9A21B4-4D0B-B37E-6079-CD542C3AC350"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

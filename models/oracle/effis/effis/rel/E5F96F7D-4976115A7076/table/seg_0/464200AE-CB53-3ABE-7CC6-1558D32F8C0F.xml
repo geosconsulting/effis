@@ -1,0 +1,85 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="464200AE-CB53-3ABE-7CC6-1558D32F8C0F" name="commune">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>82FD348F-0400-97CC-E446-16D9AAF6981D</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="commune_id" id="CB1BCD9B-A434-DA0B-0261-4FD6F3DA8B25">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>D46FF6F3-5185-A672-E5D1-F913F6819ECA</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name" id="6601655E-4EA3-0463-1931-298E5A6C7501">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>7E1370A4-5F8C-B578-C18B-9D8E8C845DBB</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>3521C5EF-3353-EA68-7C94-F68012508D4E</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="shape" id="6E207EF1-1672-B74B-8C4E-16ACBEE18B46">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>984EEFAD-8780-9143-00B7-CE8B4B92A89A</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>3</use>
+<structuredType>47E390DE-0671-C4B1-8428-0F45CBEE18F8</structuredType>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="country_id" id="5DD05680-C017-FFDA-4734-954A147E7737">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:53:22 UTC</createdTime>
+<generatorID>A051B353-39F9-DC11-EFE2-FC751D2B7A01</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="province_id" id="F29127C4-4411-DADA-DD74-CC7755D17BBE">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:53:22 UTC</createdTime>
+<generatorID>D2A67A05-99C7-13AF-7D0E-05E60F04A767</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E51AF20B-66FF-DB1C-80DC-C2492A347E36" name="commune_PK">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>7BC574EA-17BF-49FB-C9A2-EC1B54059312</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CB1BCD9B-A434-DA0B-0261-4FD6F3DA8B25"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

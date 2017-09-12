@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="EAFAD25D-C82B-EBB1-DF6E-5296F73145CE" containerWithKeyObject="F6372312-00DE-7361-08AB-D2F305CB43FE" localFKIndex="2B4EDAAB-6CFC-D411-F0CC-E7812D86C5CD" name="burnt_area_forecast_metadata_FK">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:53:47 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<referredTableLongName>metadata</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>1E20424F-6CF2-ADD9-B6B3-35CE13DB5D9E</referredTableID>
+<keyObject>40C96560-FB4D-4874-E8C3-83C062D7D0B9</keyObject>
+<referredKeyID>40C96560-FB4D-4874-E8C3-83C062D7D0B9</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>metadata_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+<propertyMap>
+<property name="createdByFKDiscoverer" value="true"/>
+</propertyMap>
+</FKIndexAssociation>

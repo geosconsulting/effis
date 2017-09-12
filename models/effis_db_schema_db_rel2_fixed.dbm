@@ -1,0 +1,1676 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.0-beta2" last-position="0,0" last-zoom="0.6"
+	 default-schema="public" default-owner="postgres">
+<database name="effis" encoding="UTF8" lc-collate="en_US.UTF-8" lc-ctype="en_US.UTF-8">
+	<role name="postgres"/>
+	<tablespace name="pg_default"/>
+</database>
+
+<schema name="public" rect-visible="true" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<extension name="postgis" cur-version="2.3.3">
+	<schema name="public"/>
+	<comment><![CDATA[PostGIS geometry, geography, and raster spatial types and functions]]></comment>
+</extension>
+
+<schema name="topology" rect-visible="true" fill-color="#4afed8">
+	<role name="postgres"/>
+</schema>
+
+<extension name="postgis_topology" cur-version="2.3.3">
+	<schema name="topology"/>
+	<comment><![CDATA[PostGIS topology spatial types and functions]]></comment>
+</extension>
+
+<sequence name="burntAreaForecast_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="burntAreaForecast">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1080" y="1220"/>
+	<column name="id" not-null="true" default-value="nextval('&quot;BurntAreaForecast_id_seq&quot;'::regclass)">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="date">
+		<type name="date" length="0"/>
+	</column>
+	<column name="fire">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="metadata">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0" spatial-type="MULTIPOLYGON" variation="0" srid="0"/>
+	</column>
+	<column name="time_horizon">
+		<type name="timestamp" length="0"/>
+	</column>
+	<constraint name="BurntAreaForecast_pk" type="pk-constr" table="public.&quot;burntAreaForecast&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="Choices_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="satellite">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="2000" y="880"/>
+	<column name="id" not-null="true" sequence="public.&quot;Choices_id_seq&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="type">
+		<type name="character varying" length="40"/>
+	</column>
+	<constraint name="Choices_pk" type="pk-constr" table="public.satellite">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="macro_area">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1680" y="80"/>
+	<column name="name">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="organization">
+		<type name="varchar" length="50"/>
+	</column>
+	<column name="macro_area_id" not-null="true">
+		<type name="serial" length="3"/>
+	</column>
+	<constraint name="macroarea_pk" type="pk-constr" table="public.macro_area">
+		<columns names="macro_area_id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="unique_macro_area_id" type="uq-constr" table="public.macro_area">
+		<columns names="macro_area_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="intensity">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="400" y="40"/>
+	<column name="intensity_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="evo_id">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="date">
+		<type name="date" length="0"/>
+	</column>
+	<column name="map">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="total">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="average">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="peak">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="meta">
+		<type name="smallint" length="0"/>
+	</column>
+	<constraint name="Intensity_pk" type="pk-constr" table="public.intensity">
+		<columns names="intensity_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="macroarea_macroarea_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="hotspot_cluster">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Hotspots and Hotspots Clusters ARE not related....is it necessary to double FK to regions?]]></comment>
+	<position x="1600" y="420"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="country">
+		<type name="varchar" length="50"/>
+	</column>
+	<column name="region">
+		<type name="varchar" length="100"/>
+	</column>
+	<column name="province">
+		<type name="varchar" length="100"/>
+	</column>
+	<column name="date">
+		<type name="date" length="0"/>
+	</column>
+	<column name="area">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0" spatial-type="MULTIPOINT" variation="0" srid="4326"/>
+	</column>
+	<column name="meta">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="fire_id">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="HotSpotCluster_pk" type="pk-constr" table="public.hotspot_cluster">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="hotspot_unique" type="uq-constr" table="public.hotspot_cluster">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="firePopulationDamageStatistic_FirePopulationDamageStatitic_id_s"
+	 start="1" increment="1"
+	 min-value="-2147483648" max-value="2147483647"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<sequence name="fireEnvironmentalDamageStatistic_fireEnvironmentalDamageStatist"
+	 start="1" increment="1"
+	 min-value="-2147483648" max-value="2147483647"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="emission">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="160" y="980"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fire_id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="date">
+		<type name="date" length="0"/>
+	</column>
+	<column name="chemical">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="total">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="average">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="peak">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="meta">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="emission_pk" type="pk-constr" table="public.emission">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="organization_organization_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="organization">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1680" y="220"/>
+	<column name="organization_id" not-null="true" sequence="public.organization_organization_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="name">
+		<type name="character varying" length="25"/>
+	</column>
+	<column name="eu">
+		<type name="bool" length="0"/>
+	</column>
+	<constraint name="organization_pk" type="pk-constr" table="public.organization">
+		<columns names="organization_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="emissionshapes">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="140" y="740"/>
+	<column name="emissionShapes_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="emission_id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="date">
+		<type name="date" length="0"/>
+	</column>
+	<column name="shape">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="altitude">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="meta">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="emissionShapes_pk" type="pk-constr" table="public.emissionshapes">
+		<columns names="emissionShapes_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="fireEmissionStatistic_fireEmissionStatistic_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="fireEmissionStatistic">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="140" y="440"/>
+	<column name="fireEmissionStatistic_id" not-null="true" sequence="public.&quot;fireEmissionStatistic_fireEmissionStatistic_id_seq&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fire">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="biomass">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="ch4">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="co">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="co2">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="ec">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="nmhc">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="nox">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="oc">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="pm">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="pm10">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="pm2_5">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="voc">
+		<type name="double precision" length="0"/>
+	</column>
+	<constraint name="fireEmissionStatistic_pk" type="pk-constr" table="public.&quot;fireEmissionStatistic&quot;">
+		<columns names="fireEmissionStatistic_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="chemical_chemical_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="chemical">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="220" y="1260"/>
+	<column name="chemical_id" not-null="true" sequence="public.chemical_chemical_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="name">
+		<type name="character" length="80"/>
+	</column>
+	<constraint name="chemical_pk" type="pk-constr" table="public.chemical">
+		<columns names="chemical_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="report_report_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="report">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="940" y="40"/>
+	<column name="report_id" not-null="true" sequence="public.report_report_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="data">
+		<type name="json" length="0"/>
+	</column>
+	<column name="date">
+		<type name="date" length="0"/>
+	</column>
+	<column name="filepath">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="fire">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="revision">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="report_pk" type="pk-constr" table="public.report">
+		<columns names="report_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="fire_fire_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="fire">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="620" y="240"/>
+	<column name="fire_id" not-null="true" sequence="public.fire_fire_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="country">
+		<type name="varchar" length="14"/>
+	</column>
+	<column name="macro_region">
+		<type name="varchar" length="14"/>
+	</column>
+	<column name="region">
+		<type name="varchar" length="14"/>
+	</column>
+	<column name="province">
+		<type name="varchar" length="14"/>
+	</column>
+	<column name="updated">
+		<type name="date" length="0"/>
+	</column>
+	<column name="area">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="detected">
+		<type name="date" length="0"/>
+	</column>
+	<column name="meta">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<constraint name="fire_pk" type="pk-constr" table="public.fire">
+		<columns names="fire_id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="unique_fire" type="uq-constr" table="public.fire">
+		<columns names="fire_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="grid_grid_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="grid">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1860" y="1180"/>
+	<column name="grid_id" not-null="true" sequence="public.grid_grid_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="name">
+		<type name="character" length="100"/>
+	</column>
+	<column name="3d">
+		<type name="smallint" length="0"/>
+	</column>
+	<constraint name="Grid_pk" type="pk-constr" table="public.grid">
+		<columns names="grid_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="gridPoint_gridPoint_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="gridPoint">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1860" y="1420"/>
+	<column name="gridPoint_id" not-null="true" sequence="public.&quot;gridPoint_gridPoint_id_seq&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="grid">
+		<type name="character" length="100"/>
+	</column>
+	<column name="point">
+		<type name="double precision" length="0"/>
+	</column>
+	<constraint name="gridPoint_pk" type="pk-constr" table="public.&quot;gridPoint&quot;">
+		<columns names="gridPoint_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="wind_wind_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="wind">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1520" y="1300"/>
+	<column name="wind_id" not-null="true" sequence="public.wind_wind_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="name">
+		<type name="character" length="100"/>
+	</column>
+	<column name="grid">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="date">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="wind_pk" type="pk-constr" table="public.wind">
+		<columns names="wind_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="windpoint_windpoint_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="windpoint">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="2220" y="1100"/>
+	<column name="windpoint_id" not-null="true" sequence="public.windpoint_windpoint_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="grid">
+		<type name="character" length="100"/>
+	</column>
+	<column name="grid_point">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="wind">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="x">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="y">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="z">
+		<type name="double precision" length="0"/>
+	</column>
+	<constraint name="windpoint_pk" type="pk-constr" table="public.windpoint">
+		<columns names="windpoint_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="temperature_temperature_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="temperature">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="2200" y="1360"/>
+	<column name="temperature_id" not-null="true" sequence="public.temperature_temperature_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="name">
+		<type name="character" length="100"/>
+	</column>
+	<column name="grid">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="date">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="wind_id" type="pk-constr" table="public.temperature">
+		<columns names="temperature_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="firePopulationDamageStatistic">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1040" y="1400"/>
+	<column name="FirePopulationDamageStatitic_id" not-null="true" sequence="public.&quot;firePopulationDamageStatistic_FirePopulationDamageStatitic_id_s&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="integer">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="buffer_size">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fire_builtup_area">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fire_forecast">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="fire_pop_avg">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fire_pop_peak">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fire_pop_total">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="on_forecast">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="potential_builtup_area">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="potential_pop_avg">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="potential_pop_peak">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="potential_pop_total">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="firePopulationDamageStatistic_pk" type="pk-constr" table="public.&quot;firePopulationDamageStatistic&quot;">
+		<columns names="FirePopulationDamageStatitic_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="fireEnvironmentalDamageStatistic">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="540" y="1120"/>
+	<column name="fireEnvironmentalDamageStatistic_id" not-null="true" sequence="public.&quot;fireEnvironmentalDamageStatistic_fireEnvironmentalDamageStatist&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="burnt_area">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="agricultural_area">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="artificial_surface">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="broad_leaved_forest">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="coniferous">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="mixed">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="other_land_cover">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="other_natural_landcover">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="percentage_natura2k">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="sclerophyllous">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="transitional">
+		<type name="double precision" length="0"/>
+	</column>
+	<constraint name="fireEnvironmentalDamageStatistic_pk" type="pk-constr" table="public.&quot;fireEnvironmentalDamageStatistic&quot;">
+		<columns names="fireEnvironmentalDamageStatistic_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="nuts_gid_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="nuts">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1960" y="440"/>
+	<column name="gid" not-null="true" sequence="public.nuts_gid_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nuts_id">
+		<type name="character varying" length="14"/>
+	</column>
+	<column name="stat_levl_">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="shape_area">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="shape_len">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<constraint name="nuts_pkey" type="pk-constr" table="public.nuts">
+		<columns names="gid" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="burnt_area_gid_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="burnt_area">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Real Data From Roberto]]></comment>
+	<position x="580" y="620"/>
+	<column name="gid" not-null="true" sequence="public.burnt_area_gid_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="objectid">
+		<type name="numeric" length="10" precision="0"/>
+	</column>
+	<column name="id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="country">
+		<type name="character varying" length="2"/>
+	</column>
+	<column name="countryful">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="province">
+		<type name="character varying" length="60"/>
+	</column>
+	<column name="commune">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="firedate">
+		<type name="character varying" length="10"/>
+	</column>
+	<column name="area_ha">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="broadlea">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="conifer">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="mixed">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="scleroph">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="transit">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="othernatlc">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="agriareas">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="artifsurf">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="otherlc">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="percna2k">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="lastupdate">
+		<type name="character varying" length="10"/>
+	</column>
+	<column name="class">
+		<type name="character varying" length="6"/>
+	</column>
+	<column name="mic">
+		<type name="character varying" length="5"/>
+	</column>
+	<column name="critech">
+		<type name="character varying" length="3"/>
+	</column>
+	<column name="shape_area">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="shape_len">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="fire">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="burnt_area_pkey" type="pk-constr" table="public.burnt_area">
+		<columns names="gid" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="id_UQ" type="uq-constr" table="public.burnt_area">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="hotspots_gid_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="hotspots">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Real Data From Roberto]]></comment>
+	<position x="1620" y="760"/>
+	<column name="gid" not-null="true" sequence="public.hotspots_gid_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="objectid">
+		<type name="numeric" length="10" precision="0"/>
+	</column>
+	<column name="hs_date">
+		<type name="character varying" length="10"/>
+	</column>
+	<column name="hs_time">
+		<type name="character varying" length="5"/>
+	</column>
+	<column name="conf">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="country">
+		<type name="character varying" length="2"/>
+	</column>
+	<column name="province">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="commune">
+		<type name="character varying" length="80"/>
+	</column>
+	<column name="corine">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="class">
+		<type name="character varying" length="4"/>
+	</column>
+	<column name="lat">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="lon">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="critech">
+		<type name="character varying" length="3"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="satellite">
+		<type name="integer" length="15"/>
+	</column>
+	<constraint name="hotspots_pkey" type="pk-constr" table="public.hotspots">
+		<columns names="gid" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="attributenuts_internal_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="attributenuts">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="2220" y="600"/>
+	<column name="internal_id" not-null="true" sequence="public.attributenuts_internal_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="cntr_code">
+		<type name="character varying" length="3"/>
+	</column>
+	<column name="nut_id">
+		<type name="character" length="7"/>
+	</column>
+	<column name="name_latin">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="name_ascii">
+		<type name="character varying" length="255"/>
+	</column>
+	<constraint name="internal_id_pk" type="pk-constr" table="public.attributenuts">
+		<columns names="internal_id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="unique_attnuts" type="uq-constr" table="public.attributenuts">
+		<columns names="nut_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<view name="nuts_attr" materialized="true">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="2040" y="300"/>
+	<reference>
+		<expression><![CDATA[ SELECT a.gid,
+    a.nuts_id,
+    a.stat_levl_,
+    a.geom,
+    b.name_latin,
+    b.name_ascii
+   FROM nuts a,
+    attributenuts b
+  WHERE ((a.nuts_id)::bpchar = b.nut_id);]]></expression>
+	</reference>
+</view>
+
+<view name="countries">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="2280" y="340"/>
+	<reference>
+		<expression><![CDATA[ SELECT nuts_attr.gid,
+    nuts_attr.nuts_id,
+    nuts_attr.stat_levl_,
+    nuts_attr.geom,
+    nuts_attr.name_latin,
+    nuts_attr.name_ascii
+   FROM nuts_attr
+  WHERE (nuts_attr.stat_levl_ = 0);]]></expression>
+	</reference>
+</view>
+
+<view name="macro_regions">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="2060" y="360"/>
+	<reference>
+		<expression><![CDATA[ SELECT nuts_attr.gid,
+    nuts_attr.nuts_id,
+    nuts_attr.stat_levl_,
+    nuts_attr.geom,
+    nuts_attr.name_latin,
+    nuts_attr.name_ascii
+   FROM nuts_attr
+  WHERE (nuts_attr.stat_levl_ = 1);]]></expression>
+	</reference>
+</view>
+
+<view name="regions">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="2260" y="240"/>
+	<reference>
+		<expression><![CDATA[ SELECT nuts_attr.gid,
+    nuts_attr.nuts_id,
+    nuts_attr.stat_levl_,
+    nuts_attr.geom,
+    nuts_attr.name_latin,
+    nuts_attr.name_ascii
+   FROM nuts_attr
+  WHERE (nuts_attr.stat_levl_ = 2);]]></expression>
+	</reference>
+</view>
+
+<view name="provinces">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="2040" y="220"/>
+	<reference>
+		<expression><![CDATA[ SELECT nuts_attr.gid,
+    nuts_attr.nuts_id,
+    nuts_attr.stat_levl_,
+    nuts_attr.geom,
+    nuts_attr.name_latin,
+    nuts_attr.name_ascii
+   FROM nuts_attr
+  WHERE (nuts_attr.stat_levl_ = 3);]]></expression>
+	</reference>
+</view>
+
+<table name="country_stable">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1240" y="140"/>
+	<column name="gid" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="nuts_id">
+		<type name="character varying" length="14"/>
+	</column>
+	<column name="stat_levl_">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="name_latin">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="name_ascii">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="macro_area">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="organization">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="country_nuts_pk" type="pk-constr" table="public.country_stable">
+		<columns names="gid" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="unique_gid_country" type="uq-constr" table="public.country_stable">
+		<columns names="gid" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="unique_nutsid" type="uq-constr" table="public.country_stable">
+		<columns names="nuts_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="country_nuts_idx" table="public.country_stable"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<extension name="dblink" cur-version="1.2">
+	<schema name="public"/>
+	<comment><![CDATA[connect to other PostgreSQL databases from within a database]]></comment>
+</extension>
+
+<index name="sidx_fire_geom" table="public.fire"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<index name="sidx_burnt_area_geom" table="public.burnt_area"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<index name="sidx_burntAreaForecast_shape" table="public.&quot;burntAreaForecast&quot;"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<index name="sidx_emissionshapes_shape" table="public.emissionshapes"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="shape"/>
+		</idxelement>
+</index>
+
+<index name="sidx_hotspots_geom" table="public.hotspots"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<table name="macro_regions_stable">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1120" y="440"/>
+	<column name="gid" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nuts_id">
+		<type name="character varying" length="14"/>
+	</column>
+	<column name="stat_levl_">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="name_latin">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="name_ascii">
+		<type name="character varying" length="255"/>
+	</column>
+	<constraint name="macro_regions_stable_pk" type="pk-constr" table="public.macro_regions_stable">
+		<columns names="gid" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="unique_macroregionid" type="uq-constr" table="public.macro_regions_stable">
+		<columns names="nuts_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="regions_stable">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1140" y="600"/>
+	<column name="gid" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nuts_id">
+		<type name="character varying" length="14"/>
+	</column>
+	<column name="stat_levl_">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="name_latin">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="name_ascii">
+		<type name="character varying" length="255"/>
+	</column>
+	<constraint name="regions_stable_pk" type="pk-constr" table="public.regions_stable">
+		<columns names="gid" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="unique_regionid" type="uq-constr" table="public.regions_stable">
+		<columns names="nuts_id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="unique_asciiName" type="uq-constr" table="public.regions_stable">
+		<columns names="name_ascii" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="provinces_stable">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1160" y="800"/>
+	<column name="gid" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nuts_id">
+		<type name="character varying" length="14"/>
+	</column>
+	<column name="stat_levl_">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="name_latin">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="name_ascii">
+		<type name="character varying" length="255"/>
+	</column>
+	<constraint name="provinces_stable_pk" type="pk-constr" table="public.provinces_stable">
+		<columns names="gid" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="unique_provinceid" type="uq-constr" table="public.provinces_stable">
+		<columns names="nuts_id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="unique_asciiName_province" type="uq-constr" table="public.provinces_stable">
+		<columns names="name_ascii" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="ghostHotSpot">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1120" y="980"/>
+	<column name="ghosthotspot_id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="country">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="province">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="commune">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="date">
+		<type name="date" length="0"/>
+	</column>
+	<column name="satellite">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0" spatial-type="MULTIPOLYGON" variation="0" srid="4326"/>
+	</column>
+	<column name="meta">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="ghostHotSpot_pk" type="pk-constr" table="public.&quot;ghostHotSpot&quot;">
+		<columns names="ghosthotspot_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="metadata">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="60" y="240"/>
+	<column name="metadata_id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="ancillary_data">
+		<type name="json" length="0"/>
+	</column>
+	<column name="automatic">
+		<type name="bool" length="0"/>
+	</column>
+	<column name="date">
+		<type name="date" length="0"/>
+	</column>
+	<column name="note">
+		<type name="text" length="0"/>
+	</column>
+	<column name="process">
+		<type name="text" length="0"/>
+	</column>
+	<column name="user">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="metadata_pk" type="pk-constr" table="public.metadata">
+		<columns names="metadata_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<textbox name="NUTS Views" bold="true" font-size="13">
+	<position x="2100" y="160"/>
+	<comment><![CDATA[Materialized Views splitting NUTS 
+in different levels (not used)]]></comment>
+</textbox>
+
+<textbox name="grid winds temperature Links" bold="true" font-size="13">
+	<position x="1740" y="1120"/>
+	<comment><![CDATA[No connection with Fire or Burnt Areas]]></comment>
+</textbox>
+
+<textbox name="NUTS SHP" bold="true" font-size="13">
+	<position x="2000" y="600"/>
+	<comment><![CDATA[NUTS Shapefiles 
+used for testing 
+purposes]]></comment>
+</textbox>
+
+<constraint name="burntAreaForecast_fire_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="CASCADE" ref-table="public.fire" table="public.&quot;burntAreaForecast&quot;">
+	<columns names="fire" ref-type="src-columns"/>
+	<columns names="fire_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="intensity_metadata_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.metadata" table="public.intensity">
+	<columns names="meta" ref-type="src-columns"/>
+	<columns names="metadata_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="intensity_burntarea_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.burnt_area" table="public.intensity">
+	<columns names="evo_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="hotspotCluster_fire_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="CASCADE" ref-table="public.fire" table="public.hotspot_cluster">
+	<columns names="fire_id" ref-type="src-columns"/>
+	<columns names="fire_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="hotspotsCluster_country_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.country_stable" table="public.hotspot_cluster">
+	<columns names="country" ref-type="src-columns"/>
+	<columns names="nuts_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="hotspotsCluster_region_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.regions_stable" table="public.hotspot_cluster">
+	<columns names="region" ref-type="src-columns"/>
+	<columns names="nuts_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="hotspotsCluster_province_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.provinces_stable" table="public.hotspot_cluster">
+	<columns names="province" ref-type="src-columns"/>
+	<columns names="nuts_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="emission_chemical_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.chemical" table="public.emission">
+	<columns names="chemical" ref-type="src-columns"/>
+	<columns names="chemical_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="emission_fire_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.fire" table="public.emission">
+	<columns names="fire_id" ref-type="src-columns"/>
+	<columns names="fire_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="emission_metadata_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.metadata" table="public.emission">
+	<columns names="meta" ref-type="src-columns"/>
+	<columns names="metadata_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="emissionShape_emission_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="CASCADE" ref-table="public.emission" table="public.emissionshapes">
+	<columns names="emission_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="emissionshapes_metadata_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="CASCADE" ref-table="public.metadata" table="public.emissionshapes">
+	<columns names="emissionShapes_id" ref-type="src-columns"/>
+	<columns names="metadata_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fireEmissionStatistics_fire_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.fire" table="public.&quot;fireEmissionStatistic&quot;">
+	<columns names="fire" ref-type="src-columns"/>
+	<columns names="fire_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="report_fire_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.fire" table="public.report">
+	<columns names="fire" ref-type="src-columns"/>
+	<columns names="fire_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fire_country_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.country_stable" table="public.fire">
+	<columns names="country" ref-type="src-columns"/>
+	<columns names="nuts_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fire_macro_region_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.macro_regions_stable" table="public.fire">
+	<columns names="macro_region" ref-type="src-columns"/>
+	<columns names="nuts_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fire_region_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.regions_stable" table="public.fire">
+	<columns names="region" ref-type="src-columns"/>
+	<columns names="nuts_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fire_province_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.provinces_stable" table="public.fire">
+	<columns names="province" ref-type="src-columns"/>
+	<columns names="nuts_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fire_metadata_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="CASCADE" ref-table="public.metadata" table="public.fire">
+	<columns names="meta" ref-type="src-columns"/>
+	<columns names="metadata_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="grid_gridpoint_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.grid" table="public.&quot;gridPoint&quot;">
+	<columns names="gridPoint_id" ref-type="src-columns"/>
+	<columns names="grid_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="wind_grid_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.grid" table="public.wind">
+	<columns names="wind_id" ref-type="src-columns"/>
+	<columns names="grid_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="windpoint_grid_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="CASCADE" ref-table="public.grid" table="public.windpoint">
+	<columns names="windpoint_id" ref-type="src-columns"/>
+	<columns names="grid_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="FK_temperature_grid" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.grid" table="public.temperature">
+	<columns names="temperature_id" ref-type="src-columns"/>
+	<columns names="grid_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fpds_burntarea_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="CASCADE" ref-table="public.burnt_area" table="public.&quot;firePopulationDamageStatistic&quot;">
+	<columns names="FirePopulationDamageStatitic_id" ref-type="src-columns"/>
+	<columns names="gid" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="feds_burntarea_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="CASCADE" ref-table="public.burnt_area" table="public.&quot;fireEnvironmentalDamageStatistic&quot;">
+	<columns names="fireEnvironmentalDamageStatistic_id" ref-type="src-columns"/>
+	<columns names="gid" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="nuts_attrnuts_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="CASCADE" ref-table="public.attributenuts" table="public.nuts">
+	<columns names="nuts_id" ref-type="src-columns"/>
+	<columns names="nut_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="burnt_area_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="CASCADE" ref-table="public.fire" table="public.burnt_area">
+	<columns names="fire" ref-type="src-columns"/>
+	<columns names="fire_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="hotspots_country_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.country_stable" table="public.hotspots">
+	<columns names="country" ref-type="src-columns"/>
+	<columns names="nuts_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="hotspot_satellite_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.satellite" table="public.hotspots">
+	<columns names="satellite" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="country_macroarea_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="CASCADE" ref-table="public.macro_area" table="public.country_stable">
+	<columns names="macro_area" ref-type="src-columns"/>
+	<columns names="macro_area_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="country_organization_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="CASCADE" ref-table="public.organization" table="public.country_stable">
+	<columns names="organization" ref-type="src-columns"/>
+	<columns names="organization_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="ghosthotspot_country_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.country_stable" table="public.&quot;ghostHotSpot&quot;">
+	<columns names="country" ref-type="src-columns"/>
+	<columns names="nuts_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="ghosthotspot_region_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.regions_stable" table="public.&quot;ghostHotSpot&quot;">
+	<columns names="commune" ref-type="src-columns"/>
+	<columns names="nuts_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="ghosthotspot_province_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.provinces_stable" table="public.&quot;ghostHotSpot&quot;">
+	<columns names="province" ref-type="src-columns"/>
+	<columns names="nuts_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="ghostohotspot_metadata_pk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.metadata" table="public.&quot;ghostHotSpot&quot;">
+	<columns names="meta" ref-type="src-columns"/>
+	<columns names="metadata_id" ref-type="dst-columns"/>
+</constraint>
+
+<relationship name="rel_emission_chemical" type="relfk"
+	 custom-color="#d6746d"
+	 src-table="public.emission"
+	 dst-table="public.chemical"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_emissionshapes_emission" type="relfk"
+	 custom-color="#d230ad"
+	 src-table="public.emissionshapes"
+	 dst-table="public.emission"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="&quot;rel_gridPoint_grid&quot;" type="relfk"
+	 custom-color="#4efea5"
+	 src-table="public.&quot;gridPoint&quot;"
+	 dst-table="public.grid"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_wind_grid" type="relfk"
+	 custom-color="#f6463e"
+	 src-table="public.wind"
+	 dst-table="public.grid"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_windpoint_grid" type="relfk"
+	 custom-color="#911ade"
+	 src-table="public.windpoint"
+	 dst-table="public.grid"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_temperature_grid" type="relfk"
+	 custom-color="#9a8770"
+	 src-table="public.temperature"
+	 dst-table="public.grid"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_fire_country_stable" type="relfk"
+	 src-table="public.fire"
+	 dst-table="public.country_stable"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_fire_macro_regions_stable" type="relfk"
+	 src-table="public.fire"
+	 dst-table="public.macro_regions_stable"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_fire_regions_stable" type="relfk"
+	 src-table="public.fire"
+	 dst-table="public.regions_stable"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_fire_provinces_stable" type="relfk"
+	 src-table="public.fire"
+	 dst-table="public.provinces_stable"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_hotspots_country_stable" type="relfk"
+	 src-table="public.hotspots"
+	 dst-table="public.country_stable"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_hotspot_cluster_fire" type="relfk"
+	 src-table="public.hotspot_cluster"
+	 dst-table="public.fire"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_burnt_area_fire" type="relfk"
+	 src-table="public.burnt_area"
+	 dst-table="public.fire"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_hotspots_choice" type="relfk"
+	 src-table="public.hotspots"
+	 dst-table="public.satellite"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="&quot;rel_fireEmissionStatistic_fire&quot;" type="relfk"
+	 src-table="public.&quot;fireEmissionStatistic&quot;"
+	 dst-table="public.fire"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="&quot;rel_burntAreaForecast_fire&quot;" type="relfk"
+	 src-table="public.&quot;burntAreaForecast&quot;"
+	 dst-table="public.fire"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="&quot;rel_ghostHotSpot_country_stable&quot;" type="relfk"
+	 src-table="public.&quot;ghostHotSpot&quot;"
+	 dst-table="public.country_stable"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="&quot;rel_ghostHotSpot_regions_stable&quot;" type="relfk"
+	 src-table="public.&quot;ghostHotSpot&quot;"
+	 dst-table="public.regions_stable"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="&quot;rel_ghostHotSpot_provinces_stable&quot;" type="relfk"
+	 src-table="public.&quot;ghostHotSpot&quot;"
+	 dst-table="public.provinces_stable"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="&quot;rel_fireEnvironmentalDamageStatistic_burnt_area&quot;" type="relfk"
+	 src-table="public.&quot;fireEnvironmentalDamageStatistic&quot;"
+	 dst-table="public.burnt_area"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="&quot;rel_firePopulationDamageStatistic_burnt_area&quot;" type="relfk"
+	 src-table="public.&quot;firePopulationDamageStatistic&quot;"
+	 dst-table="public.burnt_area"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_emission_fire" type="relfk"
+	 src-table="public.emission"
+	 dst-table="public.fire"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_country_stable_macro_area" type="relfk"
+	 src-table="public.country_stable"
+	 dst-table="public.macro_area"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_country_stable_organization" type="relfk"
+	 src-table="public.country_stable"
+	 dst-table="public.organization"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_nuts_attributenuts" type="relfk"
+	 src-table="public.nuts"
+	 dst-table="public.attributenuts"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_fire_metadata" type="relfk"
+	 src-table="public.fire"
+	 dst-table="public.metadata"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_emissionshapes_metadata" type="relfk"
+	 src-table="public.emissionshapes"
+	 dst-table="public.metadata"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_emission_metadata" type="relfk"
+	 src-table="public.emission"
+	 dst-table="public.metadata"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="&quot;rel_ghostHotSpot_metadata&quot;" type="relfk"
+	 src-table="public.&quot;ghostHotSpot&quot;"
+	 dst-table="public.metadata"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_hotspot_cluster_country_stable" type="relfk"
+	 src-table="public.hotspot_cluster"
+	 dst-table="public.country_stable"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_hotspot_cluster_regions_stable" type="relfk"
+	 src-table="public.hotspot_cluster"
+	 dst-table="public.regions_stable"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_hotspot_cluster_provinces_stable" type="relfk"
+	 src-table="public.hotspot_cluster"
+	 dst-table="public.provinces_stable"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_report_fire" type="relfk"
+	 src-table="public.report"
+	 dst-table="public.fire"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_intensity_metadata" type="relfk"
+	 src-table="public.intensity"
+	 dst-table="public.metadata"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_intensity_burnt_area" type="relfk"
+	 src-table="public.intensity"
+	 dst-table="public.burnt_area"
+	 src-required="false" dst-required="false"/>
+
+</dbmodel>

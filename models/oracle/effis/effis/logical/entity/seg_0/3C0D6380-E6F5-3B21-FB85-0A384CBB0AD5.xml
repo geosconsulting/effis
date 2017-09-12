@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="3C0D6380-E6F5-3B21-FB85-0A384CBB0AD5" name="grid">
+<createdBy>oracle</createdBy>
+<createdTime>2017-08-29 14:10:17 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="grid id" id="451A3E85-7CFE-89BC-314E-E81AB9A7176F">
+<createdBy>oracle</createdBy>
+<createdTime>2017-08-29 14:10:22 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="name" id="4048E5F9-7E5E-81AF-74EE-A1FF72219159">
+<createdBy>oracle</createdBy>
+<createdTime>2017-08-29 14:10:45 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="threed" id="B51BA033-8C2A-76D2-262B-7A989233B1FF">
+<createdBy>oracle</createdBy>
+<createdTime>2017-08-29 14:14:11 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT018</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="316F38DA-1402-3E33-0A5A-D0BEF8B0B39D" name="grid PK">
+<createdBy>oracle</createdBy>
+<createdTime>2017-08-29 14:10:38 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>451A3E85-7CFE-89BC-314E-E81AB9A7176F</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

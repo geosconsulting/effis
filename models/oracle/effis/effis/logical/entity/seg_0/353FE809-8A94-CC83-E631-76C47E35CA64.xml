@@ -1,0 +1,72 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="353FE809-8A94-CC83-E631-76C47E35CA64" name="country">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-04 15:35:06 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="country id" id="A7E819C5-D037-559F-B9C3-1C712C943E26">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-04 15:35:22 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>C8B0FADC-324E-A52A-48EF-4F32E45A9429</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="name" id="039370FD-9C2C-078F-E9AA-74ECFD7F3CD2">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-04 15:35:43 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>3521C5EF-3353-EA68-7C94-F68012508D4E</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="geom" id="49FD1148-6DAD-1597-03B8-4CE591697721">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-04 15:36:06 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>3</use>
+<structuredType>47E390DE-0671-C4B1-8428-0F45CBEE18F8</structuredType>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="92CFFFB8-6402-BD78-4530-FE32DE80CE28" name="country PK">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-04 15:36:29 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>A7E819C5-D037-559F-B9C3-1C712C943E26</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,60 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="E7B7E4DD-71CA-D9C6-D7A0-2EEBE6C2B9D5" name="satellite">
+<createdBy>oracle</createdBy>
+<createdTime>2017-08-29 10:52:55 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="satellite id" id="2A3E4380-72F8-2080-585F-8C6CA25F3438">
+<createdBy>oracle</createdBy>
+<createdTime>2017-08-29 10:53:24 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="type" id="301C4ED8-6FF5-91D4-6950-E646AF59206B">
+<createdBy>oracle</createdBy>
+<createdTime>2017-08-29 10:53:49 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>25 CHAR</dataTypeSize>
+<ownDataTypeParameters>25 CHAR,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="906918FE-769C-D50B-CBA2-010734CD0D94" name="satellite PK">
+<createdBy>oracle</createdBy>
+<createdTime>2017-08-29 10:53:33 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>2A3E4380-72F8-2080-585F-8C6CA25F3438</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

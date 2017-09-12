@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="macro_area_organization_FK" directorySegmentName="seg_1" id="FF4D693A-A135-79EF-BA20-7B1522B8586C">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:54:57 UTC</createdTime>
+<generatorID>BE45AD26-221E-8FEC-93D6-B2F4363A5843</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<sourcePk>C812C105-8B09-56D9-7795-1929D3227B09</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>2EDC5384-DEEF-8438-09F4-3464AB1012E1</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>2EA98B49-19AE-2C26-67D9-8F2952A1B05B</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

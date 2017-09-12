@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="burnt_area_forecast_metadata_FK" directorySegmentName="seg_0" id="F9F1FB2F-579D-BA16-5ECC-93D5737C30D3">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:54:57 UTC</createdTime>
+<generatorID>EAFAD25D-C82B-EBB1-DF6E-5296F73145CE</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<sourcePk>BDBCB675-CF56-84B8-1B7B-C8C3A1120417</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>8A19AE77-54D9-C982-4F68-88DECA984759</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>31E56644-6E1C-EF37-94A2-BB7A346E8ECE</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="ghost_hotspot_satellite_FK" directorySegmentName="seg_1" id="62691C86-12F6-21BB-458C-CA30893EE09B">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:54:57 UTC</createdTime>
+<generatorID>8DD9B802-79B3-DF13-0D2C-A1C4EE0CAF0F</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<sourcePk>906918FE-769C-D50B-CBA2-010734CD0D94</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>E7B7E4DD-71CA-D9C6-D7A0-2EEBE6C2B9D5</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>0B0BCAB0-2040-458D-52E1-B4014C3C515B</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

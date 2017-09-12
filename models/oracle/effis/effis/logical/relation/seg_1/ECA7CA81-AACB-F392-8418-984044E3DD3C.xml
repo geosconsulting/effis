@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="hotspot_cluster_metadata_FK" directorySegmentName="seg_1" id="ECA7CA81-AACB-F392-8418-984044E3DD3C">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:54:57 UTC</createdTime>
+<generatorID>EF249F62-3AC3-AA4A-3E14-D5FE84BCF735</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<sourcePk>BDBCB675-CF56-84B8-1B7B-C8C3A1120417</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>8A19AE77-54D9-C982-4F68-88DECA984759</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>A490452F-0F4C-188E-6A1A-6425350CB2C6</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

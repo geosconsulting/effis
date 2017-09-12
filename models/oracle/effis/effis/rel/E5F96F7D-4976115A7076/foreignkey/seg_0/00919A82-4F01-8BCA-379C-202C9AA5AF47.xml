@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="00919A82-4F01-8BCA-379C-202C9AA5AF47" containerWithKeyObject="0F4BCB70-CE62-5B95-9478-8544F430A379" localFKIndex="2B53646D-C561-9636-E7EC-24C4171CF348" name="emissionshape_metadata_FK">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:53:47 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<referredTableLongName>metadata</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>1E20424F-6CF2-ADD9-B6B3-35CE13DB5D9E</referredTableID>
+<keyObject>40C96560-FB4D-4874-E8C3-83C062D7D0B9</keyObject>
+<referredKeyID>40C96560-FB4D-4874-E8C3-83C062D7D0B9</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>metadata_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+<propertyMap>
+<property name="createdByFKDiscoverer" value="true"/>
+</propertyMap>
+</FKIndexAssociation>

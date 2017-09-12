@@ -1,0 +1,144 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="F078E6DA-782A-7C32-AACA-0E2812CEE6D1" name="emission">
+<createdBy>oracle</createdBy>
+<createdTime>2017-08-29 13:00:12 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="emission id" id="00419662-7F76-06AC-B5B7-2F47B4AC2E4E">
+<createdBy>oracle</createdBy>
+<createdTime>2017-08-29 13:00:20 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="date" id="51FF190D-61C9-0ABF-22EB-98D2634F4A3A">
+<createdBy>oracle</createdBy>
+<createdTime>2017-08-29 13:01:21 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="total" id="53FA0ADC-7AB7-E144-E5F7-216FD044EFA9">
+<createdBy>oracle</createdBy>
+<createdTime>2017-08-29 13:03:22 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="average" id="92D585B0-C90E-3282-3DCD-4D84E98C231C">
+<createdBy>oracle</createdBy>
+<createdTime>2017-08-29 13:03:40 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="peak" id="5E15EB65-07D5-DB3F-21AD-C726D0908852">
+<createdBy>oracle</createdBy>
+<createdTime>2017-08-29 13:03:41 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fire id" id="CDFA6107-1C77-4D9D-1575-E372A8B5C22D">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:43:51 UTC</createdTime>
+<generatorID>49D124BE-35FD-2AAA-E478-CE9738D2E136</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>F144C46D-8CD5-140E-962C-2C79FE73DD3F</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="chemical id" id="7CB19A81-A5F5-4CDF-898E-17A3EC4B85A1">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:44:05 UTC</createdTime>
+<generatorID>96B8B019-1CEA-2103-80B4-D1F932278A07</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>B6122399-DC7D-4865-D8FA-05BACC0C463B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="metadata id" id="54C70A13-99B0-D0CC-C2E7-B03D8DC64FDD">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:44:17 UTC</createdTime>
+<generatorID>826FCEB1-C235-67B6-7B66-3BAEAFF03D87</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>BD6DE890-1728-30C3-2DCE-4FCE3B1EC972</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="841C3F87-9E56-8977-B8EB-FB5ED7DA4EB0" name="emission PK">
+<createdBy>oracle</createdBy>
+<createdTime>2017-08-29 13:00:38 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<newElementsIDs>00419662-7F76-06AC-B5B7-2F47B4AC2E4E</newElementsIDs>
+<usedAttributes>
+<attributeRef>00419662-7F76-06AC-B5B7-2F47B4AC2E4E</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

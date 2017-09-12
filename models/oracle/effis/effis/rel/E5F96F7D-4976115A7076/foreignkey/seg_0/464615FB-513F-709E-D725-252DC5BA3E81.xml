@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="464615FB-513F-709E-D725-252DC5BA3E81" containerWithKeyObject="4EF21895-33A8-9088-CC81-918F8AD84CDB" localFKIndex="EB532473-0DFE-A3CE-695A-7F755F15B8F3" name="fireEmissionStatistic_fire_FK">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:53:47 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<referredTableLongName>fire</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>62DB7854-8559-A114-6AA0-FDD515F98336</referredTableID>
+<keyObject>7E429114-AD10-4548-CA2B-45528A2D023F</keyObject>
+<referredKeyID>7E429114-AD10-4548-CA2B-45528A2D023F</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>fire_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+<propertyMap>
+<property name="createdByFKDiscoverer" value="true"/>
+</propertyMap>
+</FKIndexAssociation>

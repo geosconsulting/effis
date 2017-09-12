@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="BE45AD26-221E-8FEC-93D6-B2F4363A5843" containerWithKeyObject="D764A68A-F27A-33E5-ABE4-0DA65871B600" localFKIndex="7A529BD4-24D7-3555-AF27-309C7CE8CC42" name="macro_area_organization_FK">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:53:47 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<referredTableLongName>organization</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>3EAB2450-96AC-BBA2-5E16-7A8F520493D9</referredTableID>
+<keyObject>1AADCF97-8396-2728-94AC-D38860B5AAA5</keyObject>
+<referredKeyID>1AADCF97-8396-2728-94AC-D38860B5AAA5</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>organization_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+<propertyMap>
+<property name="createdByFKDiscoverer" value="true"/>
+</propertyMap>
+</FKIndexAssociation>

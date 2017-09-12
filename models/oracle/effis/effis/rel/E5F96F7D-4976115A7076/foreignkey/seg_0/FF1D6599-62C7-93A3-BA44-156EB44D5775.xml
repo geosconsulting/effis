@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="FF1D6599-62C7-93A3-BA44-156EB44D5775" containerWithKeyObject="BD4F4F46-0477-400E-7265-8AD34E12936C" localFKIndex="7D9FD300-D263-457F-5D87-E60B8B5DA03A" name="temperature_grid_FK">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:53:47 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<referredTableLongName>grid</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>F664DAE7-2D8A-7E71-3855-D8E513DFFEFE</referredTableID>
+<keyObject>72D63EAD-03A9-E566-CCC4-251529AFC109</keyObject>
+<referredKeyID>72D63EAD-03A9-E566-CCC4-251529AFC109</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>grid_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+<propertyMap>
+<property name="createdByFKDiscoverer" value="true"/>
+</propertyMap>
+</FKIndexAssociation>

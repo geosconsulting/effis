@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="firePopDamageStat_burnt_area_FK" directorySegmentName="seg_1" id="AA3D702E-2277-01C8-840B-1EEB0133CA3F">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:54:57 UTC</createdTime>
+<generatorID>C9265CC4-3539-000D-A15E-5BE92B044336</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<sourcePk>9CD3075F-BD1A-8A88-3BE9-A30F7AA290CD</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>1E04B831-5424-EA67-2C44-C629D692AB47</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>729EBDC4-253C-CE77-C5F0-45A9786F16AC</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

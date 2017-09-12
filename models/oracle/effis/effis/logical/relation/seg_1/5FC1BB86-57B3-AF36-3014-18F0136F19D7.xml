@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="windpoint_grid_FK" directorySegmentName="seg_1" id="5FC1BB86-57B3-AF36-3014-18F0136F19D7">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:54:57 UTC</createdTime>
+<generatorID>EBE56377-E7C1-386E-6CA8-508D9FE95D2B</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<sourcePk>316F38DA-1402-3E33-0A5A-D0BEF8B0B39D</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>3C0D6380-E6F5-3B21-FB85-0A384CBB0AD5</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>187CD87D-E81B-E453-DE12-CA80FBBE2FE1</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

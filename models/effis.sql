@@ -66,7 +66,7 @@ ALTER SEQUENCE public."burntAreaForecast_id_seq" OWNER TO postgres;
 CREATE TABLE public."burntAreaForecast"(
 	id integer NOT NULL DEFAULT nextval('"BurntAreaForecast_id_seq"'::regclass),
 	date smallint,
-	fire smallint,
+	fire integer,
 	metadata smallint,
 	shape geometry,
 	time_horizon smallint,
@@ -91,31 +91,30 @@ CREATE SEQUENCE public."Choices_id_seq"
 ALTER SEQUENCE public."Choices_id_seq" OWNER TO postgres;
 -- ddl-end --
 
--- object: public.choice | type: TABLE --
--- DROP TABLE IF EXISTS public.choice CASCADE;
-CREATE TABLE public.choice(
+-- object: public.satellite | type: TABLE --
+-- DROP TABLE IF EXISTS public.satellite CASCADE;
+CREATE TABLE public.satellite(
 	id integer NOT NULL DEFAULT nextval('public."Choices_id_seq"'::regclass),
 	type character varying(40),
 	CONSTRAINT "Choices_pk" PRIMARY KEY (id)
 
 );
 -- ddl-end --
-ALTER TABLE public.choice OWNER TO postgres;
+ALTER TABLE public.satellite OWNER TO postgres;
 -- ddl-end --
 
--- object: public.country | type: TABLE --
--- DROP TABLE IF EXISTS public.country CASCADE;
-CREATE TABLE public.country(
+-- object: public.macro_area | type: TABLE --
+-- DROP TABLE IF EXISTS public.macro_area CASCADE;
+CREATE TABLE public.macro_area(
 	name character varying(255),
-	eu boolean,
-	macro_area smallint,
-	geom geometry,
-	country_id character(3) NOT NULL,
-	CONSTRAINT "Country_pk" PRIMARY KEY (country_id)
+	organization varchar(50),
+	macro_area_id serial NOT NULL,
+	CONSTRAINT macroarea_pk PRIMARY KEY (macro_area_id),
+	CONSTRAINT unique_macro_area_id UNIQUE (macro_area_id)
 
 );
 -- ddl-end --
-ALTER TABLE public.country OWNER TO postgres;
+ALTER TABLE public.macro_area OWNER TO postgres;
 -- ddl-end --
 
 -- object: public.intensity | type: TABLE --
@@ -150,34 +149,24 @@ CREATE SEQUENCE public.macroarea_macroarea_id_seq
 ALTER SEQUENCE public.macroarea_macroarea_id_seq OWNER TO postgres;
 -- ddl-end --
 
--- object: public.macroarea | type: TABLE --
--- DROP TABLE IF EXISTS public.macroarea CASCADE;
-CREATE TABLE public.macroarea(
-	macroarea_id integer NOT NULL DEFAULT nextval('public.macroarea_macroarea_id_seq'::regclass),
-	name character varying(50),
-	organization integer,
-	CONSTRAINT macroarea_pk PRIMARY KEY (macroarea_id)
-
-);
--- ddl-end --
-ALTER TABLE public.macroarea OWNER TO postgres;
--- ddl-end --
-
 -- object: public.hotspot_cluster | type: TABLE --
 -- DROP TABLE IF EXISTS public.hotspot_cluster CASCADE;
 CREATE TABLE public.hotspot_cluster(
 	id integer NOT NULL,
-	country smallint,
-	province smallint,
-	commune smallint,
+	country varchar(50),
+	region varchar(100),
+	province varchar(100),
 	date date,
 	area double precision,
 	shape smallint,
 	meta smallint,
-	fire_id smallint,
-	CONSTRAINT "HotSpotCluster_pk" PRIMARY KEY (id)
+	fire_id integer,
+	CONSTRAINT "HotSpotCluster_pk" PRIMARY KEY (id),
+	CONSTRAINT hotspot_unique UNIQUE (id)
 
 );
+-- ddl-end --
+COMMENT ON TABLE public.hotspot_cluster IS 'Hotspots and Hotspots Clusters ARE not related....is it necessary to double FK to regions?';
 -- ddl-end --
 ALTER TABLE public.hotspot_cluster OWNER TO postgres;
 -- ddl-end --
@@ -214,13 +203,13 @@ ALTER SEQUENCE public."fireEnvironmentalDamageStatistic_fireEnvironmentalDamageS
 -- DROP TABLE IF EXISTS public.emission CASCADE;
 CREATE TABLE public.emission(
 	id integer NOT NULL,
-	fire_id smallint,
+	fire_id integer,
 	date date,
 	chemical smallint,
 	total double precision,
 	average double precision,
 	peak double precision,
-	meta smallint,
+	meta integer,
 	CONSTRAINT emission_pk PRIMARY KEY (id)
 
 );
@@ -247,6 +236,7 @@ ALTER SEQUENCE public.organization_organization_id_seq OWNER TO postgres;
 CREATE TABLE public.organization(
 	organization_id integer NOT NULL DEFAULT nextval('public.organization_organization_id_seq'::regclass),
 	name character varying(25),
+	eu bool,
 	CONSTRAINT organization_pk PRIMARY KEY (organization_id)
 
 );
@@ -262,7 +252,7 @@ CREATE TABLE public.emissionshapes(
 	date date,
 	shape geometry,
 	altitude double precision,
-	meta smallint,
+	meta integer,
 	CONSTRAINT "emissionShapes_pk" PRIMARY KEY ("emissionShapes_id")
 
 );
@@ -288,7 +278,7 @@ ALTER SEQUENCE public."fireEmissionStatistic_fireEmissionStatistic_id_seq" OWNER
 -- DROP TABLE IF EXISTS public."fireEmissionStatistic" CASCADE;
 CREATE TABLE public."fireEmissionStatistic"(
 	"fireEmissionStatistic_id" integer NOT NULL DEFAULT nextval('public."fireEmissionStatistic_fireEmissionStatistic_id_seq"'::regclass),
-	fire smallint,
+	fire integer,
 	biomass double precision,
 	ch4 double precision,
 	co double precision,
@@ -382,16 +372,17 @@ ALTER SEQUENCE public.fire_fire_id_seq OWNER TO postgres;
 -- DROP TABLE IF EXISTS public.fire CASCADE;
 CREATE TABLE public.fire(
 	fire_id integer NOT NULL DEFAULT nextval('public.fire_fire_id_seq'::regclass),
-	admin_sublev_1 smallint,
-	admin_sublev_2 smallint,
-	admin_sublev_3 smallint,
-	admin_sublev_4 smallint,
+	country varchar(14),
+	macro_region varchar(14),
+	region varchar(14),
+	province varchar(14),
 	updated date,
 	area double precision,
-	country smallint,
 	detected date,
-	meta smallint,
-	CONSTRAINT fire_pk PRIMARY KEY (fire_id)
+	meta integer,
+	geom geometry,
+	CONSTRAINT fire_pk PRIMARY KEY (fire_id),
+	CONSTRAINT unique_fire UNIQUE (fire_id)
 
 );
 -- ddl-end --
@@ -543,7 +534,7 @@ ALTER TABLE public.temperature OWNER TO postgres;
 -- DROP TABLE IF EXISTS public."firePopulationDamageStatistic" CASCADE;
 CREATE TABLE public."firePopulationDamageStatistic"(
 	"FirePopulationDamageStatitic_id" integer NOT NULL DEFAULT nextval('public."firePopulationDamageStatistic_FirePopulationDamageStatitic_id_s"'::regclass),
-	burnt_area smallint,
+	"integer" smallint,
 	buffer_size integer,
 	fire_builtup_area integer,
 	fire_forecast smallint,
@@ -566,7 +557,7 @@ ALTER TABLE public."firePopulationDamageStatistic" OWNER TO postgres;
 -- DROP TABLE IF EXISTS public."fireEnvironmentalDamageStatistic" CASCADE;
 CREATE TABLE public."fireEnvironmentalDamageStatistic"(
 	"fireEnvironmentalDamageStatistic_id" integer NOT NULL DEFAULT nextval('public."fireEnvironmentalDamageStatistic_fireEnvironmentalDamageStatist"'::regclass),
-	burnt_area smallint,
+	burnt_area integer,
 	agricultural_area double precision,
 	artificial_surface double precision,
 	broad_leaved_forest double precision,
@@ -657,9 +648,12 @@ CREATE TABLE public.burnt_area(
 	shape_area numeric,
 	shape_len numeric,
 	geom geometry,
+	fire integer,
 	CONSTRAINT burnt_area_pkey PRIMARY KEY (gid)
 
 );
+-- ddl-end --
+COMMENT ON TABLE public.burnt_area IS 'Real Data From Roberto';
 -- ddl-end --
 ALTER TABLE public.burnt_area OWNER TO postgres;
 -- ddl-end --
@@ -695,9 +689,12 @@ CREATE TABLE public.hotspots(
 	lon numeric,
 	critech character varying(3),
 	geom geometry,
+	satellite integer,
 	CONSTRAINT hotspots_pkey PRIMARY KEY (gid)
 
 );
+-- ddl-end --
+COMMENT ON TABLE public.hotspots IS 'Real Data From Roberto';
 -- ddl-end --
 ALTER TABLE public.hotspots OWNER TO postgres;
 -- ddl-end --
@@ -724,7 +721,8 @@ CREATE TABLE public.attributenuts(
 	nut_id character(7),
 	name_latin character varying(255),
 	name_ascii character varying(255),
-	CONSTRAINT internal_id_pk PRIMARY KEY (internal_id)
+	CONSTRAINT internal_id_pk PRIMARY KEY (internal_id),
+	CONSTRAINT unique_attnuts UNIQUE (nut_id)
 
 );
 -- ddl-end --
@@ -817,11 +815,210 @@ SELECT nuts_attr.gid,
 ALTER VIEW public.provinces OWNER TO postgres;
 -- ddl-end --
 
--- object: "Organization_Country_fk" | type: CONSTRAINT --
--- ALTER TABLE public.country DROP CONSTRAINT IF EXISTS "Organization_Country_fk" CASCADE;
-ALTER TABLE public.country ADD CONSTRAINT "Organization_Country_fk" FOREIGN KEY (macro_area)
-REFERENCES public.organization (organization_id) MATCH FULL
+-- object: public.country_stable | type: TABLE --
+-- DROP TABLE IF EXISTS public.country_stable CASCADE;
+CREATE TABLE public.country_stable(
+	gid serial NOT NULL,
+	nuts_id character varying(14),
+	stat_levl_ integer,
+	geom geometry,
+	name_latin character varying(255),
+	name_ascii character varying(255),
+	macro_area integer,
+	organization integer,
+	CONSTRAINT country_nuts_pk PRIMARY KEY (gid),
+	CONSTRAINT unique_gid_country UNIQUE (gid),
+	CONSTRAINT unique_nutsid UNIQUE (nuts_id)
+
+);
+-- ddl-end --
+ALTER TABLE public.country_stable OWNER TO postgres;
+-- ddl-end --
+
+-- object: country_nuts_idx | type: INDEX --
+-- DROP INDEX IF EXISTS public.country_nuts_idx CASCADE;
+CREATE INDEX country_nuts_idx ON public.country_stable
+	USING gist
+	(
+	  geom
+	)	WITH (FILLFACTOR = 90);
+-- ddl-end --
+
+-- object: dblink | type: EXTENSION --
+-- DROP EXTENSION IF EXISTS dblink CASCADE;
+CREATE EXTENSION dblink
+      WITH SCHEMA public
+      VERSION '1.2';
+-- ddl-end --
+COMMENT ON EXTENSION dblink IS 'connect to other PostgreSQL databases from within a database';
+-- ddl-end --
+
+-- object: sidx_fire_geom | type: INDEX --
+-- DROP INDEX IF EXISTS public.sidx_fire_geom CASCADE;
+CREATE INDEX sidx_fire_geom ON public.fire
+	USING gist
+	(
+	  geom
+	)	WITH (FILLFACTOR = 90);
+-- ddl-end --
+
+-- object: sidx_burnt_area_geom | type: INDEX --
+-- DROP INDEX IF EXISTS public.sidx_burnt_area_geom CASCADE;
+CREATE INDEX sidx_burnt_area_geom ON public.burnt_area
+	USING gist
+	(
+	  geom
+	)	WITH (FILLFACTOR = 90);
+-- ddl-end --
+
+-- object: "sidx_burntAreaForecast_shape" | type: INDEX --
+-- DROP INDEX IF EXISTS public."sidx_burntAreaForecast_shape" CASCADE;
+CREATE INDEX "sidx_burntAreaForecast_shape" ON public."burntAreaForecast"
+	USING gist
+	(
+	  shape
+	)	WITH (FILLFACTOR = 90);
+-- ddl-end --
+
+-- object: sidx_emissionshapes_shape | type: INDEX --
+-- DROP INDEX IF EXISTS public.sidx_emissionshapes_shape CASCADE;
+CREATE INDEX sidx_emissionshapes_shape ON public.emissionshapes
+	USING gist
+	(
+	  shape
+	)	WITH (FILLFACTOR = 90);
+-- ddl-end --
+
+-- object: sidx_hotspots_geom | type: INDEX --
+-- DROP INDEX IF EXISTS public.sidx_hotspots_geom CASCADE;
+CREATE INDEX sidx_hotspots_geom ON public.hotspots
+	USING gist
+	(
+	  geom
+	)	WITH (FILLFACTOR = 90);
+-- ddl-end --
+
+-- object: public.macro_regions_stable | type: TABLE --
+-- DROP TABLE IF EXISTS public.macro_regions_stable CASCADE;
+CREATE TABLE public.macro_regions_stable(
+	gid integer NOT NULL,
+	nuts_id character varying(14),
+	stat_levl_ integer,
+	geom geometry,
+	name_latin character varying(255),
+	name_ascii character varying(255),
+	CONSTRAINT macro_regions_stable_pk PRIMARY KEY (gid),
+	CONSTRAINT unique_macroregionid UNIQUE (nuts_id)
+
+);
+-- ddl-end --
+ALTER TABLE public.macro_regions_stable OWNER TO postgres;
+-- ddl-end --
+
+-- object: public.regions_stable | type: TABLE --
+-- DROP TABLE IF EXISTS public.regions_stable CASCADE;
+CREATE TABLE public.regions_stable(
+	gid integer NOT NULL,
+	nuts_id character varying(14),
+	stat_levl_ integer,
+	geom geometry,
+	name_latin character varying(255),
+	name_ascii character varying(255),
+	CONSTRAINT regions_stable_pk PRIMARY KEY (gid),
+	CONSTRAINT unique_regionid UNIQUE (nuts_id),
+	CONSTRAINT "unique_asciiName" UNIQUE (name_ascii)
+
+);
+-- ddl-end --
+ALTER TABLE public.regions_stable OWNER TO postgres;
+-- ddl-end --
+
+-- object: public.provinces_stable | type: TABLE --
+-- DROP TABLE IF EXISTS public.provinces_stable CASCADE;
+CREATE TABLE public.provinces_stable(
+	gid integer NOT NULL,
+	nuts_id character varying(14),
+	stat_levl_ integer,
+	geom geometry,
+	name_latin character varying(255),
+	name_ascii character varying(255),
+	CONSTRAINT provinces_stable_pk PRIMARY KEY (gid),
+	CONSTRAINT unique_provinceid UNIQUE (nuts_id),
+	CONSTRAINT "unique_asciiName_province" UNIQUE (name_ascii)
+
+);
+-- ddl-end --
+ALTER TABLE public.provinces_stable OWNER TO postgres;
+-- ddl-end --
+
+-- object: public."ghostHotSpot" | type: TABLE --
+-- DROP TABLE IF EXISTS public."ghostHotSpot" CASCADE;
+CREATE TABLE public."ghostHotSpot"(
+	ghosthotspot_id serial NOT NULL,
+	country varchar,
+	province varchar,
+	commune varchar,
+	date date,
+	satellite integer,
+	geom geometry(MULTIPOLYGON, 4326),
+	meta integer,
+	CONSTRAINT "ghostHotSpot_pk" PRIMARY KEY (ghosthotspot_id)
+
+);
+-- ddl-end --
+ALTER TABLE public."ghostHotSpot" OWNER TO postgres;
+-- ddl-end --
+
+-- object: public.metadata | type: TABLE --
+-- DROP TABLE IF EXISTS public.metadata CASCADE;
+CREATE TABLE public.metadata(
+	metadata_id serial NOT NULL,
+	ancillary_data json,
+	automatic bool,
+	date date,
+	note text,
+	process text,
+	"user" text,
+	CONSTRAINT metadata_pk PRIMARY KEY (metadata_id)
+
+);
+-- ddl-end --
+ALTER TABLE public.metadata OWNER TO postgres;
+-- ddl-end --
+
+-- object: "burntAreaForecast_fire_fk" | type: CONSTRAINT --
+-- ALTER TABLE public."burntAreaForecast" DROP CONSTRAINT IF EXISTS "burntAreaForecast_fire_fk" CASCADE;
+ALTER TABLE public."burntAreaForecast" ADD CONSTRAINT "burntAreaForecast_fire_fk" FOREIGN KEY (fire)
+REFERENCES public.fire (fire_id) MATCH FULL
 ON DELETE CASCADE ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: "hotspotCluster_fire_fk" | type: CONSTRAINT --
+-- ALTER TABLE public.hotspot_cluster DROP CONSTRAINT IF EXISTS "hotspotCluster_fire_fk" CASCADE;
+ALTER TABLE public.hotspot_cluster ADD CONSTRAINT "hotspotCluster_fire_fk" FOREIGN KEY (fire_id)
+REFERENCES public.fire (fire_id) MATCH FULL
+ON DELETE CASCADE ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: "hotspotsCluster_country_fk" | type: CONSTRAINT --
+-- ALTER TABLE public.hotspot_cluster DROP CONSTRAINT IF EXISTS "hotspotsCluster_country_fk" CASCADE;
+ALTER TABLE public.hotspot_cluster ADD CONSTRAINT "hotspotsCluster_country_fk" FOREIGN KEY (country)
+REFERENCES public.country_stable (nuts_id) MATCH FULL
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ddl-end --
+
+-- object: "hotspotsCluster_region_fk" | type: CONSTRAINT --
+-- ALTER TABLE public.hotspot_cluster DROP CONSTRAINT IF EXISTS "hotspotsCluster_region_fk" CASCADE;
+ALTER TABLE public.hotspot_cluster ADD CONSTRAINT "hotspotsCluster_region_fk" FOREIGN KEY (region)
+REFERENCES public.regions_stable (nuts_id) MATCH FULL
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ddl-end --
+
+-- object: "hotspotsCluster_province_fk" | type: CONSTRAINT --
+-- ALTER TABLE public.hotspot_cluster DROP CONSTRAINT IF EXISTS "hotspotsCluster_province_fk" CASCADE;
+ALTER TABLE public.hotspot_cluster ADD CONSTRAINT "hotspotsCluster_province_fk" FOREIGN KEY (province)
+REFERENCES public.provinces_stable (nuts_id) MATCH FULL
+ON DELETE NO ACTION ON UPDATE NO ACTION;
 -- ddl-end --
 
 -- object: emission_chemical_fk | type: CONSTRAINT --
@@ -831,10 +1028,73 @@ REFERENCES public.chemical (chemical_id) MATCH FULL
 ON DELETE CASCADE ON UPDATE CASCADE;
 -- ddl-end --
 
+-- object: emission_fire_fk | type: CONSTRAINT --
+-- ALTER TABLE public.emission DROP CONSTRAINT IF EXISTS emission_fire_fk CASCADE;
+ALTER TABLE public.emission ADD CONSTRAINT emission_fire_fk FOREIGN KEY (fire_id)
+REFERENCES public.fire (fire_id) MATCH FULL
+ON DELETE CASCADE ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: emission_metadata_fk | type: CONSTRAINT --
+-- ALTER TABLE public.emission DROP CONSTRAINT IF EXISTS emission_metadata_fk CASCADE;
+ALTER TABLE public.emission ADD CONSTRAINT emission_metadata_fk FOREIGN KEY (meta)
+REFERENCES public.metadata (metadata_id) MATCH FULL
+ON DELETE CASCADE ON UPDATE CASCADE;
+-- ddl-end --
+
 -- object: "emissionShape_emission_fk" | type: CONSTRAINT --
 -- ALTER TABLE public.emissionshapes DROP CONSTRAINT IF EXISTS "emissionShape_emission_fk" CASCADE;
 ALTER TABLE public.emissionshapes ADD CONSTRAINT "emissionShape_emission_fk" FOREIGN KEY (emission_id)
 REFERENCES public.emission (id) MATCH FULL
+ON DELETE CASCADE ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: emissionshapes_metadata_fk | type: CONSTRAINT --
+-- ALTER TABLE public.emissionshapes DROP CONSTRAINT IF EXISTS emissionshapes_metadata_fk CASCADE;
+ALTER TABLE public.emissionshapes ADD CONSTRAINT emissionshapes_metadata_fk FOREIGN KEY ("emissionShapes_id")
+REFERENCES public.metadata (metadata_id) MATCH FULL
+ON DELETE CASCADE ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: "fireEmissionStatistics_fire_fk" | type: CONSTRAINT --
+-- ALTER TABLE public."fireEmissionStatistic" DROP CONSTRAINT IF EXISTS "fireEmissionStatistics_fire_fk" CASCADE;
+ALTER TABLE public."fireEmissionStatistic" ADD CONSTRAINT "fireEmissionStatistics_fire_fk" FOREIGN KEY (fire)
+REFERENCES public.fire (fire_id) MATCH FULL
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ddl-end --
+
+-- object: fire_country_fk | type: CONSTRAINT --
+-- ALTER TABLE public.fire DROP CONSTRAINT IF EXISTS fire_country_fk CASCADE;
+ALTER TABLE public.fire ADD CONSTRAINT fire_country_fk FOREIGN KEY (country)
+REFERENCES public.country_stable (nuts_id) MATCH FULL
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ddl-end --
+
+-- object: fire_macro_region_fk | type: CONSTRAINT --
+-- ALTER TABLE public.fire DROP CONSTRAINT IF EXISTS fire_macro_region_fk CASCADE;
+ALTER TABLE public.fire ADD CONSTRAINT fire_macro_region_fk FOREIGN KEY (macro_region)
+REFERENCES public.macro_regions_stable (nuts_id) MATCH FULL
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ddl-end --
+
+-- object: fire_region_fk | type: CONSTRAINT --
+-- ALTER TABLE public.fire DROP CONSTRAINT IF EXISTS fire_region_fk CASCADE;
+ALTER TABLE public.fire ADD CONSTRAINT fire_region_fk FOREIGN KEY (region)
+REFERENCES public.regions_stable (nuts_id) MATCH FULL
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ddl-end --
+
+-- object: fire_province_fk | type: CONSTRAINT --
+-- ALTER TABLE public.fire DROP CONSTRAINT IF EXISTS fire_province_fk CASCADE;
+ALTER TABLE public.fire ADD CONSTRAINT fire_province_fk FOREIGN KEY (province)
+REFERENCES public.provinces_stable (nuts_id) MATCH FULL
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ddl-end --
+
+-- object: fire_metadata_fk | type: CONSTRAINT --
+-- ALTER TABLE public.fire DROP CONSTRAINT IF EXISTS fire_metadata_fk CASCADE;
+ALTER TABLE public.fire ADD CONSTRAINT fire_metadata_fk FOREIGN KEY (meta)
+REFERENCES public.metadata (metadata_id) MATCH FULL
 ON DELETE CASCADE ON UPDATE CASCADE;
 -- ddl-end --
 
@@ -864,6 +1124,90 @@ ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE public.temperature ADD CONSTRAINT "FK_temperature_grid" FOREIGN KEY (temperature_id)
 REFERENCES public.grid (grid_id) MATCH FULL
 ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ddl-end --
+
+-- object: fpds_burntarea_fk | type: CONSTRAINT --
+-- ALTER TABLE public."firePopulationDamageStatistic" DROP CONSTRAINT IF EXISTS fpds_burntarea_fk CASCADE;
+ALTER TABLE public."firePopulationDamageStatistic" ADD CONSTRAINT fpds_burntarea_fk FOREIGN KEY ("FirePopulationDamageStatitic_id")
+REFERENCES public.burnt_area (gid) MATCH FULL
+ON DELETE CASCADE ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: feds_burntarea_fk | type: CONSTRAINT --
+-- ALTER TABLE public."fireEnvironmentalDamageStatistic" DROP CONSTRAINT IF EXISTS feds_burntarea_fk CASCADE;
+ALTER TABLE public."fireEnvironmentalDamageStatistic" ADD CONSTRAINT feds_burntarea_fk FOREIGN KEY ("fireEnvironmentalDamageStatistic_id")
+REFERENCES public.burnt_area (gid) MATCH FULL
+ON DELETE CASCADE ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: nuts_attrnuts_fk | type: CONSTRAINT --
+-- ALTER TABLE public.nuts DROP CONSTRAINT IF EXISTS nuts_attrnuts_fk CASCADE;
+ALTER TABLE public.nuts ADD CONSTRAINT nuts_attrnuts_fk FOREIGN KEY (nuts_id)
+REFERENCES public.attributenuts (nut_id) MATCH FULL
+ON DELETE CASCADE ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: burnt_area_fk | type: CONSTRAINT --
+-- ALTER TABLE public.burnt_area DROP CONSTRAINT IF EXISTS burnt_area_fk CASCADE;
+ALTER TABLE public.burnt_area ADD CONSTRAINT burnt_area_fk FOREIGN KEY (fire)
+REFERENCES public.fire (fire_id) MATCH FULL
+ON DELETE CASCADE ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: hotspots_country_fk | type: CONSTRAINT --
+-- ALTER TABLE public.hotspots DROP CONSTRAINT IF EXISTS hotspots_country_fk CASCADE;
+ALTER TABLE public.hotspots ADD CONSTRAINT hotspots_country_fk FOREIGN KEY (country)
+REFERENCES public.country_stable (nuts_id) MATCH FULL
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ddl-end --
+
+-- object: hotspot_satellite_fk | type: CONSTRAINT --
+-- ALTER TABLE public.hotspots DROP CONSTRAINT IF EXISTS hotspot_satellite_fk CASCADE;
+ALTER TABLE public.hotspots ADD CONSTRAINT hotspot_satellite_fk FOREIGN KEY (satellite)
+REFERENCES public.satellite (id) MATCH FULL
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ddl-end --
+
+-- object: country_macroarea_fk | type: CONSTRAINT --
+-- ALTER TABLE public.country_stable DROP CONSTRAINT IF EXISTS country_macroarea_fk CASCADE;
+ALTER TABLE public.country_stable ADD CONSTRAINT country_macroarea_fk FOREIGN KEY (macro_area)
+REFERENCES public.macro_area (macro_area_id) MATCH FULL
+ON DELETE CASCADE ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: country_organization_fk | type: CONSTRAINT --
+-- ALTER TABLE public.country_stable DROP CONSTRAINT IF EXISTS country_organization_fk CASCADE;
+ALTER TABLE public.country_stable ADD CONSTRAINT country_organization_fk FOREIGN KEY (organization)
+REFERENCES public.organization (organization_id) MATCH FULL
+ON DELETE CASCADE ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: ghosthotspot_country_fk | type: CONSTRAINT --
+-- ALTER TABLE public."ghostHotSpot" DROP CONSTRAINT IF EXISTS ghosthotspot_country_fk CASCADE;
+ALTER TABLE public."ghostHotSpot" ADD CONSTRAINT ghosthotspot_country_fk FOREIGN KEY (country)
+REFERENCES public.country_stable (nuts_id) MATCH FULL
+ON DELETE CASCADE ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: ghosthotspot_region_fk | type: CONSTRAINT --
+-- ALTER TABLE public."ghostHotSpot" DROP CONSTRAINT IF EXISTS ghosthotspot_region_fk CASCADE;
+ALTER TABLE public."ghostHotSpot" ADD CONSTRAINT ghosthotspot_region_fk FOREIGN KEY (commune)
+REFERENCES public.regions_stable (nuts_id) MATCH FULL
+ON DELETE CASCADE ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: ghosthotspot_province_fk | type: CONSTRAINT --
+-- ALTER TABLE public."ghostHotSpot" DROP CONSTRAINT IF EXISTS ghosthotspot_province_fk CASCADE;
+ALTER TABLE public."ghostHotSpot" ADD CONSTRAINT ghosthotspot_province_fk FOREIGN KEY (province)
+REFERENCES public.provinces_stable (nuts_id) MATCH FULL
+ON DELETE CASCADE ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: ghostohotspot_metadata_pk | type: CONSTRAINT --
+-- ALTER TABLE public."ghostHotSpot" DROP CONSTRAINT IF EXISTS ghostohotspot_metadata_pk CASCADE;
+ALTER TABLE public."ghostHotSpot" ADD CONSTRAINT ghostohotspot_metadata_pk FOREIGN KEY (ghosthotspot_id)
+REFERENCES public.metadata (metadata_id) MATCH FULL
+ON DELETE CASCADE ON UPDATE CASCADE;
 -- ddl-end --
 
 

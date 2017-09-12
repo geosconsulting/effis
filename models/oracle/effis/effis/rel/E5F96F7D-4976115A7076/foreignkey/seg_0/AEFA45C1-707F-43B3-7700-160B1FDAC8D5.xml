@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="AEFA45C1-707F-43B3-7700-160B1FDAC8D5" containerWithKeyObject="38CC13A2-DD85-D052-0BB0-185DF0885BEB" localFKIndex="30806CEA-676E-0A89-9F2A-3D289CB16B35" name="region_state_FK">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:53:47 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<referredTableLongName>state</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>5B62FF5F-B469-93E5-C6D9-78AABE55EF09</referredTableID>
+<keyObject>0172462F-379A-78CE-BC87-21D65C1F10DC</keyObject>
+<referredKeyID>0172462F-379A-78CE-BC87-21D65C1F10DC</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>state_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+<propertyMap>
+<property name="createdByFKDiscoverer" value="true"/>
+</propertyMap>
+</FKIndexAssociation>

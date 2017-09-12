@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="F2D4BB64-97D1-2E0D-854E-69E94C2BC81B" containerWithKeyObject="CEA75FB7-CBD6-C992-4D69-3799F205304E" localFKIndex="E599058D-14D2-ED87-D74D-879C61AD012A" name="windpoint_gridpoint_FK">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:53:47 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<referredTableLongName>gridpoint</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>6DD3A8FE-ADAF-6859-99FF-BFD2174A09CD</referredTableID>
+<keyObject>93FAC072-CCB4-8CBC-91AA-340F209AB95B</keyObject>
+<referredKeyID>93FAC072-CCB4-8CBC-91AA-340F209AB95B</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>gridpoint_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+<propertyMap>
+<property name="createdByFKDiscoverer" value="true"/>
+</propertyMap>
+</FKIndexAssociation>

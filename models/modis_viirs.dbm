@@ -1,0 +1,2374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.0-beta2" last-position="0,0" last-zoom="0.55"
+	 default-schema="public" default-owner="postgres">
+<role name="jrc"
+      createdb="true"
+      replication="true"
+      inherit="true"
+      login="true"
+      encrypted="true"
+      password="********">
+</role>
+
+<database name="modis_virs" encoding="UTF8" lc-collate="en_US.UTF-8" lc-ctype="en_US.UTF-8">
+	<role name="postgres"/>
+	<tablespace name="pg_default"/>
+</database>
+
+<schema name="public" rect-visible="true" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<extension name="postgis" cur-version="2.3.3">
+	<schema name="public"/>
+	<comment><![CDATA[PostGIS geometry, geography, and raster spatial types and functions]]></comment>
+</extension>
+
+<schema name="topology" rect-visible="true" fill-color="#4fc968">
+	<role name="postgres"/>
+</schema>
+
+<extension name="postgis_topology" cur-version="2.3.3">
+	<schema name="topology"/>
+	<comment><![CDATA[PostGIS topology spatial types and functions]]></comment>
+</extension>
+
+<sequence name="VNP14IMGTDL_NRT_Global_7d_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="VNP14IMGTDL_NRT_Global_7d">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="60" y="60"/>
+	<column name="id" not-null="true" sequence="public.&quot;VNP14IMGTDL_NRT_Global_7d_id_seq&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="latitude">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="longitude">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="bright_ti4">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="scan">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="track">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="acq_date">
+		<type name="date" length="0"/>
+	</column>
+	<column name="acq_time">
+		<type name="character varying" length="4"/>
+	</column>
+	<column name="satellite">
+		<type name="character varying" length="1"/>
+	</column>
+	<column name="confidence">
+		<type name="character varying" length="7"/>
+	</column>
+	<column name="version">
+		<type name="character varying" length="6"/>
+	</column>
+	<column name="bright_ti5">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="frp">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="daynight">
+		<type name="character varying" length="1"/>
+	</column>
+	<constraint name="VNP14IMGTDL_NRT_Global_7d_pkey" type="pk-constr" table="public.&quot;VNP14IMGTDL_NRT_Global_7d&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="MODIS_C6_Global_7d_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="MODIS_C6_Global_7d">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="480" y="60"/>
+	<column name="id" not-null="true" sequence="public.&quot;MODIS_C6_Global_7d_id_seq&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="latitude">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="longitude">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="brightness">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="scan">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="track">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="acq_date">
+		<type name="date" length="0"/>
+	</column>
+	<column name="acq_time">
+		<type name="character varying" length="4"/>
+	</column>
+	<column name="satellite">
+		<type name="character varying" length="1"/>
+	</column>
+	<column name="confidence">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="version">
+		<type name="character varying" length="6"/>
+	</column>
+	<column name="bright_t31">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="frp">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="daynight">
+		<type name="character varying" length="1"/>
+	</column>
+	<constraint name="MODIS_C6_Global_7d_pkey" type="pk-constr" table="public.&quot;MODIS_C6_Global_7d&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="virs_geom_idx" table="public.&quot;VNP14IMGTDL_NRT_Global_7d&quot;"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<index name="modis_geom_idx" table="public.&quot;MODIS_C6_Global_7d&quot;"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<sequence name="Fires_Europe_1_1_2001_id1_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="Fires_Europe_1_1_2001">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="860" y="60"/>
+	<column name="gid" not-null="true" sequence="public.&quot;Fires_Europe_1_1_2001_id1_seq&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="idate">
+		<type name="date" length="0"/>
+	</column>
+	<column name="type">
+		<type name="character varying" length="80"/>
+	</column>
+	<column name="id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fdate">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="Fires_Europe_1_1_2001_pkey" type="pk-constr" table="public.&quot;Fires_Europe_1_1_2001&quot;">
+		<columns names="gid" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="sidx_Fires_Europe_1_1_2001_geom" table="public.&quot;Fires_Europe_1_1_2001&quot;"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<sequence name="Fires_Europe_1_1_2002_gid_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="Fires_Europe_1_1_2002">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="860" y="240"/>
+	<column name="gid" not-null="true" sequence="public.&quot;Fires_Europe_1_1_2002_gid_seq&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="idate">
+		<type name="date" length="0"/>
+	</column>
+	<column name="type">
+		<type name="character varying" length="80"/>
+	</column>
+	<column name="id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fdate">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="Fires_Europe_1_1_2002_pkey" type="pk-constr" table="public.&quot;Fires_Europe_1_1_2002&quot;">
+		<columns names="gid" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="sidx_Fires_Europe_1_1_2002_geom" table="public.&quot;Fires_Europe_1_1_2002&quot;"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<sequence name="Fires_Europe_1_1_2003_gid_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="Fires_Europe_1_1_2003">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="860" y="400"/>
+	<column name="gid" not-null="true" sequence="public.&quot;Fires_Europe_1_1_2003_gid_seq&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="idate">
+		<type name="date" length="0"/>
+	</column>
+	<column name="type">
+		<type name="character varying" length="80"/>
+	</column>
+	<column name="id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fdate">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="Fires_Europe_1_1_2003_pkey" type="pk-constr" table="public.&quot;Fires_Europe_1_1_2003&quot;">
+		<columns names="gid" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="sidx_Fires_Europe_1_1_2003_geom" table="public.&quot;Fires_Europe_1_1_2003&quot;"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<sequence name="gadm28_adm0_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="gadm28_adm0">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="60" y="380"/>
+	<column name="id" not-null="true" sequence="public.gadm28_adm0_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="objectid">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_0">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="iso">
+		<type name="character varying" length="3"/>
+	</column>
+	<column name="name_engli">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="name_iso">
+		<type name="character varying" length="54"/>
+	</column>
+	<column name="name_fao">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="name_local">
+		<type name="character varying" length="54"/>
+	</column>
+	<column name="name_obsol">
+		<type name="character varying" length="150"/>
+	</column>
+	<column name="name_varia">
+		<type name="character varying" length="160"/>
+	</column>
+	<column name="name_nonla">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="name_frenc">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="name_spani">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="name_russi">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="name_arabi">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="name_chine">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="waspartof">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="contains">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="sovereign">
+		<type name="character varying" length="40"/>
+	</column>
+	<column name="iso2">
+		<type name="character varying" length="4"/>
+	</column>
+	<column name="www">
+		<type name="character varying" length="2"/>
+	</column>
+	<column name="fips">
+		<type name="character varying" length="6"/>
+	</column>
+	<column name="ison">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="validfr">
+		<type name="character varying" length="12"/>
+	</column>
+	<column name="validto">
+		<type name="character varying" length="10"/>
+	</column>
+	<column name="pop2000">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="sqkm">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="popsqkm">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="unregion1">
+		<type name="character varying" length="254"/>
+	</column>
+	<column name="unregion2">
+		<type name="character varying" length="254"/>
+	</column>
+	<column name="developing">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="cis">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="transition">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="oecd">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="wbregion">
+		<type name="character varying" length="254"/>
+	</column>
+	<column name="wbincome">
+		<type name="character varying" length="254"/>
+	</column>
+	<column name="wbdebt">
+		<type name="character varying" length="254"/>
+	</column>
+	<column name="wbother">
+		<type name="character varying" length="254"/>
+	</column>
+	<column name="ceeac">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="cemac">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="ceplg">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="comesa">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="eac">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="ecowas">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="igad">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="ioc">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="mru">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="sacu">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="uemoa">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="uma">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="palop">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="parta">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="cacm">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="eurasec">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="agadir">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="saarc">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="asean">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="nafta">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="gcc">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="csn">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="caricom">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="eu">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="can">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="acp">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="landlocked">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="aosis">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="sids">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="islands">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="ldc">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="shape_leng">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="shape_area">
+		<type name="double precision" length="0"/>
+	</column>
+	<constraint name="gadm28_adm0_pkey" type="pk-constr" table="public.gadm28_adm0">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="sidx_gadm28_adm0_geom" table="public.gadm28_adm0"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<sequence name="gadm28_adm1_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="gadm28_adm1">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="420" y="380"/>
+	<column name="id" not-null="true" sequence="public.gadm28_adm1_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="objectid">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_0">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="iso">
+		<type name="character varying" length="3"/>
+	</column>
+	<column name="name_0">
+		<type name="character varying" length="75"/>
+	</column>
+	<column name="id_1">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="name_1">
+		<type name="character varying" length="75"/>
+	</column>
+	<column name="hasc_1">
+		<type name="character varying" length="15"/>
+	</column>
+	<column name="ccn_1">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="cca_1">
+		<type name="character varying" length="254"/>
+	</column>
+	<column name="type_1">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="engtype_1">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="nl_name_1">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="varname_1">
+		<type name="character varying" length="150"/>
+	</column>
+	<column name="shape_leng">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="shape_area">
+		<type name="double precision" length="0"/>
+	</column>
+	<constraint name="gadm28_adm1_pkey" type="pk-constr" table="public.gadm28_adm1">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="sidx_gadm28_adm1_geom" table="public.gadm28_adm1"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<sequence name="gadm28_adm2_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="gadm28_adm2">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="420" y="720"/>
+	<column name="id" not-null="true" sequence="public.gadm28_adm2_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="objectid">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_0">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="iso">
+		<type name="character varying" length="3"/>
+	</column>
+	<column name="name_0">
+		<type name="character varying" length="75"/>
+	</column>
+	<column name="id_1">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="name_1">
+		<type name="character varying" length="75"/>
+	</column>
+	<column name="id_2">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="name_2">
+		<type name="character varying" length="75"/>
+	</column>
+	<column name="hasc_2">
+		<type name="character varying" length="15"/>
+	</column>
+	<column name="ccn_2">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="cca_2">
+		<type name="character varying" length="254"/>
+	</column>
+	<column name="type_2">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="engtype_2">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="nl_name_2">
+		<type name="character varying" length="75"/>
+	</column>
+	<column name="varname_2">
+		<type name="character varying" length="150"/>
+	</column>
+	<column name="shape_leng">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="shape_area">
+		<type name="double precision" length="0"/>
+	</column>
+	<constraint name="gadm28_adm2_pkey" type="pk-constr" table="public.gadm28_adm2">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="sidx_gadm28_adm2_geom" table="public.gadm28_adm2"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<sequence name="gadm28_adm3_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="gadm28_adm3">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="420" y="1060"/>
+	<column name="id" not-null="true" sequence="public.gadm28_adm3_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="objectid">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_0">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="iso">
+		<type name="character varying" length="3"/>
+	</column>
+	<column name="name_0">
+		<type name="character varying" length="75"/>
+	</column>
+	<column name="id_1">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="name_1">
+		<type name="character varying" length="75"/>
+	</column>
+	<column name="id_2">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="name_2">
+		<type name="character varying" length="75"/>
+	</column>
+	<column name="id_3">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="name_3">
+		<type name="character varying" length="75"/>
+	</column>
+	<column name="ccn_3">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="cca_3">
+		<type name="character varying" length="15"/>
+	</column>
+	<column name="type_3">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="engtype_3">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="nl_name_3">
+		<type name="character varying" length="75"/>
+	</column>
+	<column name="varname_3">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="shape_leng">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="shape_area">
+		<type name="double precision" length="0"/>
+	</column>
+	<constraint name="gadm28_adm3_pkey" type="pk-constr" table="public.gadm28_adm3">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="sidx_gadm28_adm3_geom" table="public.gadm28_adm3"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<sequence name="gadm28_adm4_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="gadm28_adm4">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="820" y="600"/>
+	<column name="id" not-null="true" sequence="public.gadm28_adm4_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="objectid">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_0">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="iso">
+		<type name="character varying" length="3"/>
+	</column>
+	<column name="name_0">
+		<type name="character varying" length="75"/>
+	</column>
+	<column name="id_1">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="name_1">
+		<type name="character varying" length="75"/>
+	</column>
+	<column name="id_2">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="name_2">
+		<type name="character varying" length="75"/>
+	</column>
+	<column name="id_3">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="name_3">
+		<type name="character varying" length="75"/>
+	</column>
+	<column name="id_4">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="name_4">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="varname_4">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="ccn_4">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="cca_4">
+		<type name="character varying" length="20"/>
+	</column>
+	<column name="type_4">
+		<type name="character varying" length="35"/>
+	</column>
+	<column name="engtype_4">
+		<type name="character varying" length="35"/>
+	</column>
+	<column name="shape_leng">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="shape_area">
+		<type name="double precision" length="0"/>
+	</column>
+	<constraint name="gadm28_adm4_pkey" type="pk-constr" table="public.gadm28_adm4">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="sidx_gadm28_adm4_geom" table="public.gadm28_adm4"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<sequence name="gadm28_adm5_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="gadm28_adm5">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="820" y="980"/>
+	<column name="id" not-null="true" sequence="public.gadm28_adm5_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="objectid">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_0">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="iso">
+		<type name="character varying" length="3"/>
+	</column>
+	<column name="name_0">
+		<type name="character varying" length="75"/>
+	</column>
+	<column name="id_1">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="name_1">
+		<type name="character varying" length="75"/>
+	</column>
+	<column name="id_2">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="name_2">
+		<type name="character varying" length="75"/>
+	</column>
+	<column name="id_3">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="name_3">
+		<type name="character varying" length="75"/>
+	</column>
+	<column name="id_4">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="name_4">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="id_5">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="name_5">
+		<type name="character varying" length="75"/>
+	</column>
+	<column name="ccn_5">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="cca_5">
+		<type name="character varying" length="25"/>
+	</column>
+	<column name="type_5">
+		<type name="character varying" length="25"/>
+	</column>
+	<column name="engtype_5">
+		<type name="character varying" length="25"/>
+	</column>
+	<column name="shape_leng">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="shape_area">
+		<type name="double precision" length="0"/>
+	</column>
+	<constraint name="gadm28_adm5_pkey" type="pk-constr" table="public.gadm28_adm5">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="sidx_gadm28_adm5_geom" table="public.gadm28_adm5"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<sequence name="Fires_Europe_1_2_2001_gid_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="Fires_Europe_1_2_2001">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="1160" y="620"/>
+	<column name="gid" not-null="true" sequence="public.&quot;Fires_Europe_1_2_2001_gid_seq&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="idate">
+		<type name="date" length="0"/>
+	</column>
+	<column name="type">
+		<type name="character varying" length="80"/>
+	</column>
+	<column name="id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fdate">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="Fires_Europe_1_2_2001_pkey" type="pk-constr" table="public.&quot;Fires_Europe_1_2_2001&quot;">
+		<columns names="gid" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="sidx_Fires_Europe_1_2_2001_geom" table="public.&quot;Fires_Europe_1_2_2001&quot;"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<sequence name="Fires_Europe_1_3_200_gid_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="Fires_Europe_1_3_2001">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="1160" y="780"/>
+	<column name="gid" not-null="true" sequence="public.&quot;Fires_Europe_1_3_200_gid_seq&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="idate">
+		<type name="date" length="0"/>
+	</column>
+	<column name="type">
+		<type name="character varying" length="80"/>
+	</column>
+	<column name="id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fdate">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="Fires_Europe_1_3_200_pkey" type="pk-constr" table="public.&quot;Fires_Europe_1_3_2001&quot;">
+		<columns names="gid" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="sidx_Fires_Europe_1_3_200_geom" table="public.&quot;Fires_Europe_1_3_2001&quot;"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<sequence name="Fires_Europe_1_4_2001_gid_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="Fires_Europe_1_4_2001">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="1160" y="940"/>
+	<column name="gid" not-null="true" sequence="public.&quot;Fires_Europe_1_4_2001_gid_seq&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="idate">
+		<type name="date" length="0"/>
+	</column>
+	<column name="type">
+		<type name="character varying" length="80"/>
+	</column>
+	<column name="id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fdate">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="Fires_Europe_1_4_2001_pkey" type="pk-constr" table="public.&quot;Fires_Europe_1_4_2001&quot;">
+		<columns names="gid" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="sidx_Fires_Europe_1_4_2001_geom" table="public.&quot;Fires_Europe_1_4_2001&quot;"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<sequence name="Fires_Europe_1_5_2001_gid_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="Fires_Europe_1_5_2001">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="1740" y="60"/>
+	<column name="gid" not-null="true" sequence="public.&quot;Fires_Europe_1_5_2001_gid_seq&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="idate">
+		<type name="date" length="0"/>
+	</column>
+	<column name="type">
+		<type name="character varying" length="80"/>
+	</column>
+	<column name="id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fdate">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="Fires_Europe_1_5_2001_pkey" type="pk-constr" table="public.&quot;Fires_Europe_1_5_2001&quot;">
+		<columns names="gid" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="sidx_Fires_Europe_1_5_2001_geom" table="public.&quot;Fires_Europe_1_5_2001&quot;"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<sequence name="Fires_Europe_1_6_2001_gid_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="Fires_Europe_1_6_2001">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="1740" y="420"/>
+	<column name="gid" not-null="true" sequence="public.&quot;Fires_Europe_1_6_2001_gid_seq&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="idate">
+		<type name="date" length="0"/>
+	</column>
+	<column name="type">
+		<type name="character varying" length="80"/>
+	</column>
+	<column name="id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fdate">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="Fires_Europe_1_6_2001_pkey" type="pk-constr" table="public.&quot;Fires_Europe_1_6_2001&quot;">
+		<columns names="gid" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="sidx_Fires_Europe_1_6_2001_geom" table="public.&quot;Fires_Europe_1_6_2001&quot;"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<sequence name="Fires_Europe_1_7_2001_gid_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="Fires_Europe_1_7_2001">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="1160" y="1120"/>
+	<column name="gid" not-null="true" sequence="public.&quot;Fires_Europe_1_7_2001_gid_seq&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="idate">
+		<type name="date" length="0"/>
+	</column>
+	<column name="type">
+		<type name="character varying" length="80"/>
+	</column>
+	<column name="id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fdate">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="Fires_Europe_1_7_2001_pkey" type="pk-constr" table="public.&quot;Fires_Europe_1_7_2001&quot;">
+		<columns names="gid" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="sidx_Fires_Europe_1_7_2001_geom" table="public.&quot;Fires_Europe_1_7_2001&quot;"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<sequence name="Fires_Europe_1_8_2001_gid_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="Fires_Europe_1_8_2001">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="1600" y="940"/>
+	<column name="gid" not-null="true" sequence="public.&quot;Fires_Europe_1_8_2001_gid_seq&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="idate">
+		<type name="date" length="0"/>
+	</column>
+	<column name="type">
+		<type name="character varying" length="80"/>
+	</column>
+	<column name="id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fdate">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="Fires_Europe_1_8_2001_pkey" type="pk-constr" table="public.&quot;Fires_Europe_1_8_2001&quot;">
+		<columns names="gid" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="sidx_Fires_Europe_1_8_2001_geom" table="public.&quot;Fires_Europe_1_8_2001&quot;"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<sequence name="Fires_Europe_1_9_2001_gid_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="Fires_Europe_1_9_2001">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="1560" y="600"/>
+	<column name="gid" not-null="true" sequence="public.&quot;Fires_Europe_1_9_2001_gid_seq&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="idate">
+		<type name="date" length="0"/>
+	</column>
+	<column name="type">
+		<type name="character varying" length="80"/>
+	</column>
+	<column name="id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fdate">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="Fires_Europe_1_9_2001_pkey" type="pk-constr" table="public.&quot;Fires_Europe_1_9_2001&quot;">
+		<columns names="gid" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="sidx_Fires_Europe_1_9_2001_geom" table="public.&quot;Fires_Europe_1_9_2001&quot;"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<sequence name="Fires_Europe_1_10_2001_gid_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="Fires_Europe_1_10_2001">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="1580" y="780"/>
+	<column name="gid" not-null="true" sequence="public.&quot;Fires_Europe_1_10_2001_gid_seq&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="idate">
+		<type name="date" length="0"/>
+	</column>
+	<column name="type">
+		<type name="character varying" length="80"/>
+	</column>
+	<column name="id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fdate">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="Fires_Europe_1_10_2001_pkey" type="pk-constr" table="public.&quot;Fires_Europe_1_10_2001&quot;">
+		<columns names="gid" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="sidx_Fires_Europe_1_10_2001_geom" table="public.&quot;Fires_Europe_1_10_2001&quot;"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<sequence name="Fires_Europe_1_11_2000_gid_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="Fires_Europe_1_11_2000">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="1760" y="240"/>
+	<column name="gid" not-null="true" sequence="public.&quot;Fires_Europe_1_11_2000_gid_seq&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="idate">
+		<type name="date" length="0"/>
+	</column>
+	<column name="type">
+		<type name="character varying" length="80"/>
+	</column>
+	<column name="id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fdate">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="Fires_Europe_1_11_2000_pkey" type="pk-constr" table="public.&quot;Fires_Europe_1_11_2000&quot;">
+		<columns names="gid" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="sidx_Fires_Europe_1_11_2000_geom" table="public.&quot;Fires_Europe_1_11_2000&quot;"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<sequence name="Fires_Europe_1_12_2000_gid_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="Fires_Europe_1_12_2000">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="1320" y="240"/>
+	<column name="gid" not-null="true" sequence="public.&quot;Fires_Europe_1_12_2000_gid_seq&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="idate">
+		<type name="date" length="0"/>
+	</column>
+	<column name="type">
+		<type name="character varying" length="80"/>
+	</column>
+	<column name="id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fdate">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="Fires_Europe_1_12_2000_pkey" type="pk-constr" table="public.&quot;Fires_Europe_1_12_2000&quot;">
+		<columns names="gid" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="sidx_Fires_Europe_1_12_2000_geom" table="public.&quot;Fires_Europe_1_12_2000&quot;"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<sequence name="globcov1000x1000_rid_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="globcov1000x1000">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="1980" y="1560"/>
+	<column name="rid" not-null="true" sequence="public.globcov1000x1000_rid_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="rast">
+		<type name="raster" length="0"/>
+	</column>
+	<column name="filename">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="globcov1000x1000_pkey" type="pk-constr" table="public.globcov1000x1000">
+		<columns names="rid" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="enforce_srid_rast" type="ck-constr" table="public.globcov1000x1000">
+			<expression><![CDATA[(st_srid(rast) = 4326)]]></expression>
+	</constraint>
+	<constraint name="enforce_scalex_rast" type="ck-constr" table="public.globcov1000x1000">
+			<expression><![CDATA[(round((st_scalex(rast))::numeric, 10) = round(0.00277777777777778, 10))]]></expression>
+	</constraint>
+	<constraint name="enforce_scaley_rast" type="ck-constr" table="public.globcov1000x1000">
+			<expression><![CDATA[(round((st_scaley(rast))::numeric, 10) = round((- 0.00277777777777778), 10))]]></expression>
+	</constraint>
+	<constraint name="enforce_width_rast" type="ck-constr" table="public.globcov1000x1000">
+			<expression><![CDATA[(st_width(rast) = ANY (ARRAY[1000, 600]))]]></expression>
+	</constraint>
+	<constraint name="enforce_height_rast" type="ck-constr" table="public.globcov1000x1000">
+			<expression><![CDATA[(st_height(rast) = ANY (ARRAY[1000, 800]))]]></expression>
+	</constraint>
+	<constraint name="enforce_same_alignment_rast" type="ck-constr" table="public.globcov1000x1000">
+			<expression><![CDATA[st_samealignment(rast, '0100000000176CC1166CC1663F176CC1166CC166BF610BB6600B8066C0C1166CC11680564000000000000000000000000000000000E610000001000100'::raster)]]></expression>
+	</constraint>
+	<constraint name="enforce_num_bands_rast" type="ck-constr" table="public.globcov1000x1000">
+			<expression><![CDATA[(st_numbands(rast) = 1)]]></expression>
+	</constraint>
+	<constraint name="enforce_pixel_types_rast" type="ck-constr" table="public.globcov1000x1000">
+			<expression><![CDATA[(_raster_constraint_pixel_types(rast) = '{8BUI}'::text[])]]></expression>
+	</constraint>
+	<constraint name="enforce_nodata_values_rast" type="ck-constr" table="public.globcov1000x1000">
+			<expression><![CDATA[(_raster_constraint_nodata_values(rast) = '{0.0000000000}'::numeric[])]]></expression>
+	</constraint>
+	<constraint name="enforce_out_db_rast" type="ck-constr" table="public.globcov1000x1000">
+			<expression><![CDATA[(_raster_constraint_out_db(rast) = '{t}'::boolean[])]]></expression>
+	</constraint>
+	<constraint name="enforce_max_extent_rast" type="ck-constr" table="public.globcov1000x1000">
+			<expression><![CDATA[(st_envelope(rast) @ '0103000020E61000000100000005000000610BB6600B8066C03FE9933EE93F50C0610BB6600B8066C0C1166CC116805640A0F4499FF47F6640C1166CC116805640A0F4499FF47F66403FE9933EE93F50C0610BB6600B8066C03FE9933EE93F50C0'::geometry)]]></expression>
+	</constraint>
+</table>
+
+<sequence name="o_2_globcov1000x1000_rid_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="o_2_globcov1000x1000">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="1700" y="1140"/>
+	<column name="rid" not-null="true" sequence="public.o_2_globcov1000x1000_rid_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="rast">
+		<type name="raster" length="0"/>
+	</column>
+	<column name="filename">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="o_2_globcov1000x1000_pkey" type="pk-constr" table="public.o_2_globcov1000x1000">
+		<columns names="rid" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="enforce_srid_rast" type="ck-constr" table="public.o_2_globcov1000x1000">
+			<expression><![CDATA[(st_srid(rast) = 4326)]]></expression>
+	</constraint>
+	<constraint name="enforce_scalex_rast" type="ck-constr" table="public.o_2_globcov1000x1000">
+			<expression><![CDATA[(round((st_scalex(rast))::numeric, 10) = round(0.00555555555555556, 10))]]></expression>
+	</constraint>
+	<constraint name="enforce_scaley_rast" type="ck-constr" table="public.o_2_globcov1000x1000">
+			<expression><![CDATA[(round((st_scaley(rast))::numeric, 10) = round((- 0.00555555555555556), 10))]]></expression>
+	</constraint>
+	<constraint name="enforce_width_rast" type="ck-constr" table="public.o_2_globcov1000x1000">
+			<expression><![CDATA[(st_width(rast) = ANY (ARRAY[1000, 800]))]]></expression>
+	</constraint>
+	<constraint name="enforce_height_rast" type="ck-constr" table="public.o_2_globcov1000x1000">
+			<expression><![CDATA[(st_height(rast) = ANY (ARRAY[1000, 900]))]]></expression>
+	</constraint>
+	<constraint name="enforce_same_alignment_rast" type="ck-constr" table="public.o_2_globcov1000x1000">
+			<expression><![CDATA[st_samealignment(rast, '0100000000176CC1166CC1763F176CC1166CC176BF610BB6600B8066C0C1166CC11680564000000000000000000000000000000000E610000001000100'::raster)]]></expression>
+	</constraint>
+	<constraint name="enforce_num_bands_rast" type="ck-constr" table="public.o_2_globcov1000x1000">
+			<expression><![CDATA[(st_numbands(rast) = 1)]]></expression>
+	</constraint>
+	<constraint name="enforce_pixel_types_rast" type="ck-constr" table="public.o_2_globcov1000x1000">
+			<expression><![CDATA[(_raster_constraint_pixel_types(rast) = '{8BUI}'::text[])]]></expression>
+	</constraint>
+	<constraint name="enforce_nodata_values_rast" type="ck-constr" table="public.o_2_globcov1000x1000">
+			<expression><![CDATA[(_raster_constraint_nodata_values(rast) = '{0.0000000000}'::numeric[])]]></expression>
+	</constraint>
+	<constraint name="enforce_out_db_rast" type="ck-constr" table="public.o_2_globcov1000x1000">
+			<expression><![CDATA[(_raster_constraint_out_db(rast) = '{f}'::boolean[])]]></expression>
+	</constraint>
+	<constraint name="enforce_max_extent_rast" type="ck-constr" table="public.o_2_globcov1000x1000">
+			<expression><![CDATA[(st_envelope(rast) @ '0103000020E61000000100000005000000610BB6600B8066C03FE9933EE93F50C0610BB6600B8066C0C1166CC1168056409FF4499FF47F6640C1166CC1168056409FF4499FF47F66403FE9933EE93F50C0610BB6600B8066C03FE9933EE93F50C0'::geometry)]]></expression>
+	</constraint>
+	<constraint name="enforce_overview_rast" type="ck-constr" table="public.o_2_globcov1000x1000">
+			<expression><![CDATA[_overview_constraint(rast, 2, 'public'::name, 'globcov1000x1000'::name, 'rast'::name)]]></expression>
+	</constraint>
+</table>
+
+<sequence name="o_4_globcov1000x1000_rid_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="o_4_globcov1000x1000">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="1440" y="1600"/>
+	<column name="rid" not-null="true" sequence="public.o_4_globcov1000x1000_rid_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="rast">
+		<type name="raster" length="0"/>
+	</column>
+	<column name="filename">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="o_4_globcov1000x1000_pkey" type="pk-constr" table="public.o_4_globcov1000x1000">
+		<columns names="rid" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="enforce_srid_rast" type="ck-constr" table="public.o_4_globcov1000x1000">
+			<expression><![CDATA[(st_srid(rast) = 4326)]]></expression>
+	</constraint>
+	<constraint name="enforce_scalex_rast" type="ck-constr" table="public.o_4_globcov1000x1000">
+			<expression><![CDATA[(round((st_scalex(rast))::numeric, 10) = round(0.0111111111111111, 10))]]></expression>
+	</constraint>
+	<constraint name="enforce_scaley_rast" type="ck-constr" table="public.o_4_globcov1000x1000">
+			<expression><![CDATA[(round((st_scaley(rast))::numeric, 10) = round((- 0.0111111111111111), 10))]]></expression>
+	</constraint>
+	<constraint name="enforce_width_rast" type="ck-constr" table="public.o_4_globcov1000x1000">
+			<expression><![CDATA[(st_width(rast) = ANY (ARRAY[1000, 400]))]]></expression>
+	</constraint>
+	<constraint name="enforce_height_rast" type="ck-constr" table="public.o_4_globcov1000x1000">
+			<expression><![CDATA[(st_height(rast) = ANY (ARRAY[1000, 950]))]]></expression>
+	</constraint>
+	<constraint name="enforce_same_alignment_rast" type="ck-constr" table="public.o_4_globcov1000x1000">
+			<expression><![CDATA[st_samealignment(rast, '0100000000176CC1166CC1863F176CC1166CC186BF610BB6600B8066C0C1166CC11680564000000000000000000000000000000000E610000001000100'::raster)]]></expression>
+	</constraint>
+	<constraint name="enforce_num_bands_rast" type="ck-constr" table="public.o_4_globcov1000x1000">
+			<expression><![CDATA[(st_numbands(rast) = 1)]]></expression>
+	</constraint>
+	<constraint name="enforce_pixel_types_rast" type="ck-constr" table="public.o_4_globcov1000x1000">
+			<expression><![CDATA[(_raster_constraint_pixel_types(rast) = '{8BUI}'::text[])]]></expression>
+	</constraint>
+	<constraint name="enforce_nodata_values_rast" type="ck-constr" table="public.o_4_globcov1000x1000">
+			<expression><![CDATA[(_raster_constraint_nodata_values(rast) = '{0.0000000000}'::numeric[])]]></expression>
+	</constraint>
+	<constraint name="enforce_out_db_rast" type="ck-constr" table="public.o_4_globcov1000x1000">
+			<expression><![CDATA[(_raster_constraint_out_db(rast) = '{f}'::boolean[])]]></expression>
+	</constraint>
+	<constraint name="enforce_max_extent_rast" type="ck-constr" table="public.o_4_globcov1000x1000">
+			<expression><![CDATA[(st_envelope(rast) @ '0103000020E61000000100000005000000610BB6600B8066C040E9933EE93F50C0610BB6600B8066C0C1166CC1168056409FF4499FF47F6640C1166CC1168056409FF4499FF47F664040E9933EE93F50C0610BB6600B8066C040E9933EE93F50C0'::geometry)]]></expression>
+	</constraint>
+	<constraint name="enforce_overview_rast" type="ck-constr" table="public.o_4_globcov1000x1000">
+			<expression><![CDATA[_overview_constraint(rast, 4, 'public'::name, 'globcov1000x1000'::name, 'rast'::name)]]></expression>
+	</constraint>
+</table>
+
+<sequence name="o_8_globcov1000x1000_rid_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="o_8_globcov1000x1000">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="20" y="1480"/>
+	<column name="rid" not-null="true" sequence="public.o_8_globcov1000x1000_rid_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="rast">
+		<type name="raster" length="0"/>
+	</column>
+	<column name="filename">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="o_8_globcov1000x1000_pkey" type="pk-constr" table="public.o_8_globcov1000x1000">
+		<columns names="rid" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="enforce_srid_rast" type="ck-constr" table="public.o_8_globcov1000x1000">
+			<expression><![CDATA[(st_srid(rast) = 4326)]]></expression>
+	</constraint>
+	<constraint name="enforce_scalex_rast" type="ck-constr" table="public.o_8_globcov1000x1000">
+			<expression><![CDATA[(round((st_scalex(rast))::numeric, 10) = round(0.0222222222222222, 10))]]></expression>
+	</constraint>
+	<constraint name="enforce_scaley_rast" type="ck-constr" table="public.o_8_globcov1000x1000">
+			<expression><![CDATA[(round((st_scaley(rast))::numeric, 10) = round((- 0.0222222222222222), 10))]]></expression>
+	</constraint>
+	<constraint name="enforce_width_rast" type="ck-constr" table="public.o_8_globcov1000x1000">
+			<expression><![CDATA[(st_width(rast) = ANY (ARRAY[1000, 200]))]]></expression>
+	</constraint>
+	<constraint name="enforce_height_rast" type="ck-constr" table="public.o_8_globcov1000x1000">
+			<expression><![CDATA[(st_height(rast) = ANY (ARRAY[1000, 975]))]]></expression>
+	</constraint>
+	<constraint name="enforce_same_alignment_rast" type="ck-constr" table="public.o_8_globcov1000x1000">
+			<expression><![CDATA[st_samealignment(rast, '0100000000176CC1166CC1963F176CC1166CC196BF610BB6600B8066C0C1166CC11680564000000000000000000000000000000000E610000001000100'::raster)]]></expression>
+	</constraint>
+	<constraint name="enforce_num_bands_rast" type="ck-constr" table="public.o_8_globcov1000x1000">
+			<expression><![CDATA[(st_numbands(rast) = 1)]]></expression>
+	</constraint>
+	<constraint name="enforce_pixel_types_rast" type="ck-constr" table="public.o_8_globcov1000x1000">
+			<expression><![CDATA[(_raster_constraint_pixel_types(rast) = '{8BUI}'::text[])]]></expression>
+	</constraint>
+	<constraint name="enforce_nodata_values_rast" type="ck-constr" table="public.o_8_globcov1000x1000">
+			<expression><![CDATA[(_raster_constraint_nodata_values(rast) = '{0.0000000000}'::numeric[])]]></expression>
+	</constraint>
+	<constraint name="enforce_out_db_rast" type="ck-constr" table="public.o_8_globcov1000x1000">
+			<expression><![CDATA[(_raster_constraint_out_db(rast) = '{f}'::boolean[])]]></expression>
+	</constraint>
+	<constraint name="enforce_max_extent_rast" type="ck-constr" table="public.o_8_globcov1000x1000">
+			<expression><![CDATA[(st_envelope(rast) @ '0103000020E61000000100000005000000610BB6600B8066C040E9933EE93F50C0610BB6600B8066C0C1166CC1168056409FF4499FF47F6640C1166CC1168056409FF4499FF47F664040E9933EE93F50C0610BB6600B8066C040E9933EE93F50C0'::geometry)]]></expression>
+	</constraint>
+	<constraint name="enforce_overview_rast" type="ck-constr" table="public.o_8_globcov1000x1000">
+			<expression><![CDATA[_overview_constraint(rast, 8, 'public'::name, 'globcov1000x1000'::name, 'rast'::name)]]></expression>
+	</constraint>
+</table>
+
+<sequence name="o_16_globcov1000x1000_rid_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="o_16_globcov1000x1000">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="480" y="1480"/>
+	<column name="rid" not-null="true" sequence="public.o_16_globcov1000x1000_rid_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="rast">
+		<type name="raster" length="0"/>
+	</column>
+	<column name="filename">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="o_16_globcov1000x1000_pkey" type="pk-constr" table="public.o_16_globcov1000x1000">
+		<columns names="rid" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="enforce_srid_rast" type="ck-constr" table="public.o_16_globcov1000x1000">
+			<expression><![CDATA[(st_srid(rast) = 4326)]]></expression>
+	</constraint>
+	<constraint name="enforce_scalex_rast" type="ck-constr" table="public.o_16_globcov1000x1000">
+			<expression><![CDATA[(round((st_scalex(rast))::numeric, 10) = round(0.0444444444444444, 10))]]></expression>
+	</constraint>
+	<constraint name="enforce_scaley_rast" type="ck-constr" table="public.o_16_globcov1000x1000">
+			<expression><![CDATA[(round((st_scaley(rast))::numeric, 10) = round((- 0.0444444444444444), 10))]]></expression>
+	</constraint>
+	<constraint name="enforce_width_rast" type="ck-constr" table="public.o_16_globcov1000x1000">
+			<expression><![CDATA[(st_width(rast) = ANY (ARRAY[1000, 100]))]]></expression>
+	</constraint>
+	<constraint name="enforce_height_rast" type="ck-constr" table="public.o_16_globcov1000x1000">
+			<expression><![CDATA[(st_height(rast) = ANY (ARRAY[1000, 488]))]]></expression>
+	</constraint>
+	<constraint name="enforce_same_alignment_rast" type="ck-constr" table="public.o_16_globcov1000x1000">
+			<expression><![CDATA[st_samealignment(rast, '0100000000176CC1166CC1A63F176CC1166CC1A6BF610BB6600B8066C0C1166CC11680564000000000000000000000000000000000E610000001000100'::raster)]]></expression>
+	</constraint>
+	<constraint name="enforce_num_bands_rast" type="ck-constr" table="public.o_16_globcov1000x1000">
+			<expression><![CDATA[(st_numbands(rast) = 1)]]></expression>
+	</constraint>
+	<constraint name="enforce_pixel_types_rast" type="ck-constr" table="public.o_16_globcov1000x1000">
+			<expression><![CDATA[(_raster_constraint_pixel_types(rast) = '{8BUI}'::text[])]]></expression>
+	</constraint>
+	<constraint name="enforce_nodata_values_rast" type="ck-constr" table="public.o_16_globcov1000x1000">
+			<expression><![CDATA[(_raster_constraint_nodata_values(rast) = '{0.0000000000}'::numeric[])]]></expression>
+	</constraint>
+	<constraint name="enforce_out_db_rast" type="ck-constr" table="public.o_16_globcov1000x1000">
+			<expression><![CDATA[(_raster_constraint_out_db(rast) = '{f}'::boolean[])]]></expression>
+	</constraint>
+	<constraint name="enforce_max_extent_rast" type="ck-constr" table="public.o_16_globcov1000x1000">
+			<expression><![CDATA[(st_envelope(rast) @ '0103000020E61000000100000005000000610BB6600B8066C056555555554150C0610BB6600B8066C0C1166CC1168056409FF4499FF47F6640C1166CC1168056409FF4499FF47F664056555555554150C0610BB6600B8066C056555555554150C0'::geometry)]]></expression>
+	</constraint>
+	<constraint name="enforce_overview_rast" type="ck-constr" table="public.o_16_globcov1000x1000">
+			<expression><![CDATA[_overview_constraint(rast, 16, 'public'::name, 'globcov1000x1000'::name, 'rast'::name)]]></expression>
+	</constraint>
+</table>
+
+<sequence name="o_32_globcov1000x1000_rid_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="o_32_globcov1000x1000">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="940" y="1620"/>
+	<column name="rid" not-null="true" sequence="public.o_32_globcov1000x1000_rid_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="rast">
+		<type name="raster" length="0"/>
+	</column>
+	<column name="filename">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="o_32_globcov1000x1000_pkey" type="pk-constr" table="public.o_32_globcov1000x1000">
+		<columns names="rid" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="enforce_srid_rast" type="ck-constr" table="public.o_32_globcov1000x1000">
+			<expression><![CDATA[(st_srid(rast) = 4326)]]></expression>
+	</constraint>
+	<constraint name="enforce_scalex_rast" type="ck-constr" table="public.o_32_globcov1000x1000">
+			<expression><![CDATA[(round((st_scalex(rast))::numeric, 10) = round(0.0888888888888889, 10))]]></expression>
+	</constraint>
+	<constraint name="enforce_scaley_rast" type="ck-constr" table="public.o_32_globcov1000x1000">
+			<expression><![CDATA[(round((st_scaley(rast))::numeric, 10) = round((- 0.0888888888888889), 10))]]></expression>
+	</constraint>
+	<constraint name="enforce_width_rast" type="ck-constr" table="public.o_32_globcov1000x1000">
+			<expression><![CDATA[(st_width(rast) = ANY (ARRAY[1000, 50]))]]></expression>
+	</constraint>
+	<constraint name="enforce_height_rast" type="ck-constr" table="public.o_32_globcov1000x1000">
+			<expression><![CDATA[(st_height(rast) = ANY (ARRAY[744, 1000]))]]></expression>
+	</constraint>
+	<constraint name="enforce_same_alignment_rast" type="ck-constr" table="public.o_32_globcov1000x1000">
+			<expression><![CDATA[st_samealignment(rast, '0100000000176CC1166CC1B63F176CC1166CC1B6BF610BB6600B8066C0C1166CC11680564000000000000000000000000000000000E610000001000100'::raster)]]></expression>
+	</constraint>
+	<constraint name="enforce_num_bands_rast" type="ck-constr" table="public.o_32_globcov1000x1000">
+			<expression><![CDATA[(st_numbands(rast) = 1)]]></expression>
+	</constraint>
+	<constraint name="enforce_pixel_types_rast" type="ck-constr" table="public.o_32_globcov1000x1000">
+			<expression><![CDATA[(_raster_constraint_pixel_types(rast) = '{8BUI}'::text[])]]></expression>
+	</constraint>
+	<constraint name="enforce_nodata_values_rast" type="ck-constr" table="public.o_32_globcov1000x1000">
+			<expression><![CDATA[(_raster_constraint_nodata_values(rast) = '{0.0000000000}'::numeric[])]]></expression>
+	</constraint>
+	<constraint name="enforce_out_db_rast" type="ck-constr" table="public.o_32_globcov1000x1000">
+			<expression><![CDATA[(_raster_constraint_out_db(rast) = '{f}'::boolean[])]]></expression>
+	</constraint>
+	<constraint name="enforce_max_extent_rast" type="ck-constr" table="public.o_32_globcov1000x1000">
+			<expression><![CDATA[(st_envelope(rast) @ '0103000020E61000000100000005000000610BB6600B8066C056555555554150C0610BB6600B8066C0C1166CC1168056409FF4499FF47F6640C1166CC1168056409FF4499FF47F664056555555554150C0610BB6600B8066C056555555554150C0'::geometry)]]></expression>
+	</constraint>
+	<constraint name="enforce_overview_rast" type="ck-constr" table="public.o_32_globcov1000x1000">
+			<expression><![CDATA[_overview_constraint(rast, 32, 'public'::name, 'globcov1000x1000'::name, 'rast'::name)]]></expression>
+	</constraint>
+</table>
+
+<index name="globcov1000x1000_st_convexhull_idx" table="public.globcov1000x1000"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<expression><![CDATA[st_convexhull(rast)]]></expression>
+		</idxelement>
+</index>
+
+<index name="o_2_globcov1000x1000_st_convexhull_idx" table="public.o_2_globcov1000x1000"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<expression><![CDATA[st_convexhull(rast)]]></expression>
+		</idxelement>
+</index>
+
+<index name="o_4_globcov1000x1000_st_convexhull_idx" table="public.o_4_globcov1000x1000"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<expression><![CDATA[st_convexhull(rast)]]></expression>
+		</idxelement>
+</index>
+
+<index name="o_8_globcov1000x1000_st_convexhull_idx" table="public.o_8_globcov1000x1000"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<expression><![CDATA[st_convexhull(rast)]]></expression>
+		</idxelement>
+</index>
+
+<index name="o_16_globcov1000x1000_st_convexhull_idx" table="public.o_16_globcov1000x1000"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<expression><![CDATA[st_convexhull(rast)]]></expression>
+		</idxelement>
+</index>
+
+<index name="o_32_globcov1000x1000_st_convexhull_idx" table="public.o_32_globcov1000x1000"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<expression><![CDATA[st_convexhull(rast)]]></expression>
+		</idxelement>
+</index>
+
+<sequence name="populated_places_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="populated_places">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="2160" y="40"/>
+	<column name="id" not-null="true" sequence="public.populated_places_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="scalerank">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="natscale">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="labelrank">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="featurecla">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="name">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="namepar">
+		<type name="character varying" length="254"/>
+	</column>
+	<column name="namealt">
+		<type name="character varying" length="254"/>
+	</column>
+	<column name="diffascii">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nameascii">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="adm0cap">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="capalt">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="capin">
+		<type name="character varying" length="15"/>
+	</column>
+	<column name="worldcity">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="megacity">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="sov0name">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="sov_a3">
+		<type name="character varying" length="3"/>
+	</column>
+	<column name="adm0name">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="adm0_a3">
+		<type name="character varying" length="3"/>
+	</column>
+	<column name="adm1name">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="iso_a2">
+		<type name="character varying" length="5"/>
+	</column>
+	<column name="note">
+		<type name="character varying" length="254"/>
+	</column>
+	<column name="latitude">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="longitude">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="changed">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="namediff">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="diffnote">
+		<type name="character varying" length="254"/>
+	</column>
+	<column name="pop_max">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="pop_min">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="pop_other">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="rank_max">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="rank_min">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geonameid">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="meganame">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="ls_name">
+		<type name="character varying" length="41"/>
+	</column>
+	<column name="ls_match">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="checkme">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="max_pop10">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="max_pop20">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="max_pop50">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="max_pop300">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="max_pop310">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="max_natsca">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="min_areakm">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="max_areakm">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="min_areami">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="max_areami">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="min_perkm">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="max_perkm">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="min_permi">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="max_permi">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="min_bbxmin">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="max_bbxmin">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="min_bbxmax">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="max_bbxmax">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="min_bbymin">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="max_bbymin">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="min_bbymax">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="max_bbymax">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="mean_bbxc">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="mean_bbyc">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="compare">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="gn_ascii">
+		<type name="character varying" length="254"/>
+	</column>
+	<column name="feature_cl">
+		<type name="character varying" length="254"/>
+	</column>
+	<column name="feature_co">
+		<type name="character varying" length="254"/>
+	</column>
+	<column name="admin1_cod">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="gn_pop">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="elevation">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="gtopo30">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="timezone">
+		<type name="character varying" length="254"/>
+	</column>
+	<column name="geonamesno">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="un_fid">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="un_adm0">
+		<type name="character varying" length="254"/>
+	</column>
+	<column name="un_lat">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="un_long">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="pop1950">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="pop1955">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="pop1960">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="pop1965">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="pop1970">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="pop1975">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="pop1980">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="pop1985">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="pop1990">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="pop1995">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="pop2000">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="pop2005">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="pop2010">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="pop2015">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="pop2020">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="pop2025">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="pop2050">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="cityalt">
+		<type name="character varying" length="50"/>
+	</column>
+	<constraint name="populated_places_pkey" type="pk-constr" table="public.populated_places">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="sidx_populated_places_geom" table="public.populated_places"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<sequence name="Fires_Europe_1_11_2001_gid_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="Fires_Europe_1_11_2001">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="1320" y="400"/>
+	<column name="gid" not-null="true" sequence="public.&quot;Fires_Europe_1_11_2001_gid_seq&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="idate">
+		<type name="date" length="0"/>
+	</column>
+	<column name="type">
+		<type name="character varying" length="80"/>
+	</column>
+	<column name="id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fdate">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="Fires_Europe_1_11_2001_pkey" type="pk-constr" table="public.&quot;Fires_Europe_1_11_2001&quot;">
+		<columns names="gid" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="sidx_Fires_Europe_1_11_2001_geom" table="public.&quot;Fires_Europe_1_11_2001&quot;"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<sequence name="Fires_Europe_1_12_2001_gid_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="jrc"/>
+</sequence>
+
+<table name="Fires_Europe_1_12_2001">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="1320" y="60"/>
+	<column name="gid" not-null="true" sequence="public.&quot;Fires_Europe_1_12_2001_gid_seq&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="idate">
+		<type name="date" length="0"/>
+	</column>
+	<column name="type">
+		<type name="character varying" length="80"/>
+	</column>
+	<column name="id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fdate">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="Fires_Europe_1_12_2001_pkey" type="pk-constr" table="public.&quot;Fires_Europe_1_12_2001&quot;">
+		<columns names="gid" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="sidx_Fires_Europe_1_12_2001_geom" table="public.&quot;Fires_Europe_1_12_2001&quot;"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="gist" factor="90">
+		<idxelement use-sorting="false">
+			<column name="geom"/>
+		</idxelement>
+</index>
+
+<table name="poly_stat">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="1140" y="1300"/>
+	<column name="id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="objectid">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_0">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="iso">
+		<type name="character varying" length="3"/>
+	</column>
+	<column name="name_0">
+		<type name="character varying" length="75"/>
+	</column>
+	<column name="id_1">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="name_1">
+		<type name="character varying" length="75"/>
+	</column>
+	<column name="id_2">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="name_2">
+		<type name="character varying" length="75"/>
+	</column>
+	<column name="hasc_2">
+		<type name="character varying" length="15"/>
+	</column>
+	<column name="ccn_2">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="cca_2">
+		<type name="character varying" length="254"/>
+	</column>
+	<column name="type_2">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="engtype_2">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="nl_name_2">
+		<type name="character varying" length="75"/>
+	</column>
+	<column name="varname_2">
+		<type name="character varying" length="150"/>
+	</column>
+	<column name="shape_leng">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="shape_area">
+		<type name="double precision" length="0"/>
+	</column>
+</table>
+
+<table name="modis_cameroon">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="1420" y="1340"/>
+	<column name="iso">
+		<type name="character varying" length="3"/>
+	</column>
+	<column name="name_engli">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<column name="acq_date">
+		<type name="date" length="0"/>
+	</column>
+	<column name="acq_time">
+		<type name="character varying" length="4"/>
+	</column>
+	<column name="satellite">
+		<type name="character varying" length="1"/>
+	</column>
+	<column name="version">
+		<type name="character varying" length="6"/>
+	</column>
+	<column name="bright_t31">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="frp">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="daynight">
+		<type name="character varying" length="1"/>
+	</column>
+	<column name="ogc_fid">
+		<type name="bigint" length="0"/>
+	</column>
+</table>
+
+<table name="modis_cameroon_buffers">
+	<schema name="public"/>
+	<role name="jrc"/>
+	<position x="1800" y="1460"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="geom">
+		<type name="geometry" length="0"/>
+	</column>
+	<constraint name="pk_id_burr" type="pk-constr" table="public.modis_cameroon_buffers">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+</dbmodel>

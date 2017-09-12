@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="intensity_burnt_area_FK" directorySegmentName="seg_1" id="07244945-0200-2BAE-A8A1-AF1AAC5EB9E9">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:54:57 UTC</createdTime>
+<generatorID>FB9816B1-3320-76E5-E07D-B816F669A7DA</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<sourcePk>9CD3075F-BD1A-8A88-3BE9-A30F7AA290CD</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>1E04B831-5424-EA67-2C44-C629D692AB47</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>3B45A92A-7A43-E740-F7C9-544828C28B83</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

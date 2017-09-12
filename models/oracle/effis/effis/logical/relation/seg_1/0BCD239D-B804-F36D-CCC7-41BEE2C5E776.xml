@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="fireEnvDamageStat_burnt_area_FK" directorySegmentName="seg_1" id="0BCD239D-B804-F36D-CCC7-41BEE2C5E776">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:54:57 UTC</createdTime>
+<generatorID>F7CA271F-311A-1237-B125-ED3DE4E29F59</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<sourcePk>9CD3075F-BD1A-8A88-3BE9-A30F7AA290CD</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>1E04B831-5424-EA67-2C44-C629D692AB47</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>E3F82198-54C0-EA6D-DDFB-5F06E90066EF</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

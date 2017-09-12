@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="emission_fire_FK" directorySegmentName="seg_0" id="49D124BE-35FD-2AAA-E478-CE9738D2E136">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:54:57 UTC</createdTime>
+<generatorID>E334A7CB-6F80-4B01-184B-EE792D7604DC</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<sourcePk>B119D4DA-904D-DAE7-312E-ADF5038AE135</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>8EF697EB-E484-82F8-C78F-4267D2A14F92</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>F078E6DA-782A-7C32-AACA-0E2812CEE6D1</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

@@ -1,0 +1,172 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D233AB7D-99CA-60F3-1A6C-6FE008423CA6" name="ghost_hotspot">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>0B0BCAB0-2040-458D-52E1-B4014C3C515B</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ghosthotspot_id" id="9814035A-D96D-63B9-9C90-E8A2D6C74F2D">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>FE045C0B-240A-C9B0-4D32-FFACF2BD9DBD</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="date" id="9766C719-B950-154D-4F43-631BD471694E">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>880A0C5E-CA5A-B9EF-F88B-19403441E093</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="satellite" id="150AB44C-84CC-A26E-76CE-75C3CE25E39D">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>2432DF8E-BF44-3DBC-4823-697E9CC30797</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="geom" id="EC6EA869-65DD-DC76-5A87-D5C454B14EAC">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>F27620DA-2BA1-4D5E-3662-D2AF0C9B54A9</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>3</use>
+<structuredType>47E390DE-0671-C4B1-8428-0F45CBEE18F8</structuredType>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="country_id" id="D7278131-3522-1040-184F-424B653BA6AF">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:53:22 UTC</createdTime>
+<generatorID>189A135B-28B7-BE81-DDB0-DBADB39FA85F</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="province_id" id="633B38D3-B297-C127-6AFA-11F73EB8AEE7">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:53:22 UTC</createdTime>
+<generatorID>D39D1410-93D4-C347-CC52-9F61E62DE63A</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="commune_id" id="520AFEAE-8722-A9F1-5F59-5950930DE94B">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:53:22 UTC</createdTime>
+<generatorID>23BC4C58-F9B6-1C10-7C60-6FE389477C0B</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9636F311-F4ED-0026-59D7-74198471DBB9" referredColumn="CB1BCD9B-A434-DA0B-0261-4FD6F3DA8B25"/>
+</associations>
+</Column>
+<Column name="satellite_id" id="DE384DBB-E181-9314-D28D-CB4AB3678A93">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:53:22 UTC</createdTime>
+<generatorID>B756BF6A-3AB6-40AE-402E-DF14E92E6A9A</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8DD9B802-79B3-DF13-0D2C-A1C4EE0CAF0F" referredColumn="2BCEF835-AF38-68AC-BCEC-80D5B4C0AC07"/>
+</associations>
+</Column>
+<Column name="metadata_id" id="92DA30A7-CFF1-365F-486A-A4352847EBDF">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:53:22 UTC</createdTime>
+<generatorID>572651D1-8366-D8CB-DCD0-8CE44B116034</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="53E116D2-D904-6DEE-5725-BE31639834BE" referredColumn="AFAED764-3616-D211-CE24-97140F75E3AE"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A4E928DF-54B3-51A3-709F-5FE07CDF9343" name="ghost_hot_spot_PK">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 14:25:39 UTC</createdTime>
+<generatorID>9D8EFB5A-E819-4319-D9B2-CE0560E5274F</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9814035A-D96D-63B9-9C90-E8A2D6C74F2D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9B99EBDE-AB7B-3A4C-89A1-C6E1B377F01A" name="ghost_hotspot_commune_FK">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:53:47 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="520AFEAE-8722-A9F1-5F59-5950930DE94B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1AA2EBC4-46F3-6181-C812-44C5F3F25005" name="ghost_hotspot_metadata_FK">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:53:47 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="92DA30A7-CFF1-365F-486A-A4352847EBDF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3A59B398-0149-2DB1-80AC-30AB3CCE091C" name="ghost_hotspot_satellite_FK">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:53:47 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DE384DBB-E181-9314-D28D-CB4AB3678A93"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

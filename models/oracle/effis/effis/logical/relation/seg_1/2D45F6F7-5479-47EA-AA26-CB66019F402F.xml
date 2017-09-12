@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="wind_grid_FK" directorySegmentName="seg_1" id="2D45F6F7-5479-47EA-AA26-CB66019F402F">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:54:57 UTC</createdTime>
+<generatorID>909CBD9A-C596-CD22-A861-68BAC9E9965C</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<sourcePk>316F38DA-1402-3E33-0A5A-D0BEF8B0B39D</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>3C0D6380-E6F5-3B21-FB85-0A384CBB0AD5</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>C85821F2-4680-DA31-63CE-3F2ED80FE5FF</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

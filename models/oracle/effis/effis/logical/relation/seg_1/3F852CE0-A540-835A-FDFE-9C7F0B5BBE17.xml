@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="temperature_grid_FK" directorySegmentName="seg_1" id="3F852CE0-A540-835A-FDFE-9C7F0B5BBE17">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:54:57 UTC</createdTime>
+<generatorID>FF1D6599-62C7-93A3-BA44-156EB44D5775</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<sourcePk>316F38DA-1402-3E33-0A5A-D0BEF8B0B39D</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>3C0D6380-E6F5-3B21-FB85-0A384CBB0AD5</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>80117E83-DCC8-BDAB-0BEC-59CB7DA374FC</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

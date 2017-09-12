@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="hotspots_province_FK" directorySegmentName="seg_1" id="1897B49F-9C1F-06E2-9FD1-C9F24F5519A9">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:54:57 UTC</createdTime>
+<generatorID>F94A67CC-557D-9233-4F6D-6311DA4BAE47</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<sourcePk>38694778-1D2E-736B-76CA-68A5ACD6D84E</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>452808A8-ABD3-B48A-EF06-BAA3C6E55C4A</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>F2362CED-2FFA-FCFE-181C-DEAA8ECA1174</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

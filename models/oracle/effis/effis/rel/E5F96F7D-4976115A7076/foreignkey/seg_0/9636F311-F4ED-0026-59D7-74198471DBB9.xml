@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="9636F311-F4ED-0026-59D7-74198471DBB9" containerWithKeyObject="D233AB7D-99CA-60F3-1A6C-6FE008423CA6" localFKIndex="9B99EBDE-AB7B-3A4C-89A1-C6E1B377F01A" name="ghost_hotspot_commune_FK">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:53:47 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<referredTableLongName>commune</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>464200AE-CB53-3ABE-7CC6-1558D32F8C0F</referredTableID>
+<keyObject>E51AF20B-66FF-DB1C-80DC-C2492A347E36</keyObject>
+<referredKeyID>E51AF20B-66FF-DB1C-80DC-C2492A347E36</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>commune_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+<propertyMap>
+<property name="createdByFKDiscoverer" value="true"/>
+</propertyMap>
+</FKIndexAssociation>

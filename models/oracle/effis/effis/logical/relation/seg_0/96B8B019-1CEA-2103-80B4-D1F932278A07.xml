@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="emission_chemical_FK" directorySegmentName="seg_0" id="96B8B019-1CEA-2103-80B4-D1F932278A07">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:54:57 UTC</createdTime>
+<generatorID>86F77F7D-4B9C-252F-1836-0B6EFC42A262</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<sourcePk>430D8AE6-09B2-C7E1-00A0-8E0CB3EE5C4D</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>755FD1C2-CA14-3C32-1419-6224F608BAA7</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>F078E6DA-782A-7C32-AACA-0E2812CEE6D1</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

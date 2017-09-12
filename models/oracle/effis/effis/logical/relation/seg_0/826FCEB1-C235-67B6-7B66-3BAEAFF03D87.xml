@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="emission_metadata_FK" directorySegmentName="seg_0" id="826FCEB1-C235-67B6-7B66-3BAEAFF03D87">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:54:57 UTC</createdTime>
+<generatorID>7D0E2AB6-C3C7-B849-FA9F-6DB370154700</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<sourcePk>BDBCB675-CF56-84B8-1B7B-C8C3A1120417</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>8A19AE77-54D9-C982-4F68-88DECA984759</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>F078E6DA-782A-7C32-AACA-0E2812CEE6D1</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

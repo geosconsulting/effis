@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="burnt_area_commune_FK" directorySegmentName="seg_0" id="1A18EC18-A803-FF25-79B0-F609FFECEFBA">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:54:57 UTC</createdTime>
+<generatorID>9253F695-98D6-1133-0112-AC624D7A97C4</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<sourcePk>7BC574EA-17BF-49FB-C9A2-EC1B54059312</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>82FD348F-0400-97CC-E446-16D9AAF6981D</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>1E04B831-5424-EA67-2C44-C629D692AB47</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

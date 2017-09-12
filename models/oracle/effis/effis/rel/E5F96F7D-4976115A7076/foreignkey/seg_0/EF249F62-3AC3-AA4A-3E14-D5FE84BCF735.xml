@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="EF249F62-3AC3-AA4A-3E14-D5FE84BCF735" containerWithKeyObject="2A589293-4C7D-6053-2F24-D273A695BFA1" localFKIndex="947AA626-20F4-6D8E-ECB4-22226DD73A6B" name="hotspot_cluster_metadata_FK">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:53:47 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<referredTableLongName>metadata</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>1E20424F-6CF2-ADD9-B6B3-35CE13DB5D9E</referredTableID>
+<keyObject>40C96560-FB4D-4874-E8C3-83C062D7D0B9</keyObject>
+<referredKeyID>40C96560-FB4D-4874-E8C3-83C062D7D0B9</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>metadata_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+<propertyMap>
+<property name="createdByFKDiscoverer" value="true"/>
+</propertyMap>
+</FKIndexAssociation>

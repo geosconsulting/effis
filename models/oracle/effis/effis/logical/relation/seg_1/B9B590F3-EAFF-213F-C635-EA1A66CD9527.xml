@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="hotspots_country_FK" directorySegmentName="seg_1" id="B9B590F3-EAFF-213F-C635-EA1A66CD9527">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:54:57 UTC</createdTime>
+<generatorID>8842EDBB-20D1-C949-E37D-DEBFD4E590BA</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<sourcePk>92CFFFB8-6402-BD78-4530-FE32DE80CE28</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>353FE809-8A94-CC83-E631-76C47E35CA64</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>F2362CED-2FFA-FCFE-181C-DEAA8ECA1174</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="909CBD9A-C596-CD22-A861-68BAC9E9965C" containerWithKeyObject="9944B2C5-8273-D9A7-05BC-E62693ECBE4B" localFKIndex="71AC2CE9-44AA-E3F8-0099-9CCD65CA22B9" name="wind_grid_FK">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:53:47 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<referredTableLongName>grid</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>F664DAE7-2D8A-7E71-3855-D8E513DFFEFE</referredTableID>
+<keyObject>72D63EAD-03A9-E566-CCC4-251529AFC109</keyObject>
+<referredKeyID>72D63EAD-03A9-E566-CCC4-251529AFC109</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>grid_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+<propertyMap>
+<property name="createdByFKDiscoverer" value="true"/>
+</propertyMap>
+</FKIndexAssociation>

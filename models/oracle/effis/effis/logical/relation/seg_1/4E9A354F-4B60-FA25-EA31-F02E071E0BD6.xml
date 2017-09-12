@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="region_state_FK" directorySegmentName="seg_1" id="4E9A354F-4B60-FA25-EA31-F02E071E0BD6">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:54:57 UTC</createdTime>
+<generatorID>AEFA45C1-707F-43B3-7700-160B1FDAC8D5</generatorID>
+<ownerDesignName>effis</ownerDesignName>
+<engineerTo>
+<item key="E5F96F7D-3058-569A-53CA-4976115A7076" value="true"/>
+</engineerTo>
+<sourcePk>3783A488-83CE-C912-F68A-C8440B452698</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>07B1D7BB-7DC4-0197-8866-7F7D834DDC2D</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>8DA5AB4C-EA90-A386-DCB2-858B716DAC5B</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="FB9816B1-3320-76E5-E07D-B816F669A7DA" containerWithKeyObject="1FEEFE5A-BA8F-168F-AEA5-55BD20F5DA37" localFKIndex="758FDA0F-AF43-A9AB-186C-E62F4117CA7B" name="intensity_burnt_area_FK">
+<createdBy>jrc</createdBy>
+<createdTime>2017-09-05 15:53:47 UTC</createdTime>
+<ownerDesignName>effis</ownerDesignName>
+<referredTableLongName>burnt_area</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>95C0EE46-2B24-B2B9-26AA-9003300F7E58</referredTableID>
+<keyObject>9AAB887B-2A93-EF98-E291-01549733C942</keyObject>
+<referredKeyID>9AAB887B-2A93-EF98-E291-01549733C942</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>burntarea_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+<propertyMap>
+<property name="createdByFKDiscoverer" value="true"/>
+</propertyMap>
+</FKIndexAssociation>
